@@ -1,0 +1,133 @@
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.col {
+    flex: 1 1 8%;
+    margin: 0 0 0.5rem 0;
+    padding: 0.5em 10px;
+    box-sizing: border-box;
+}
+.container {
+    width: 1170px;
+    padding: 0 55px;
+    margin: 0 auto;
+}
+.space-between {
+    padding: 20px;
+     display: -webkit-flex; 
+    display: flex;
+    -webkit-flex-direction: row; 
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: space-between;
+}
+
+
+/* NESTED GRIDS ======================================== */
+
+.row .row,
+.row.nested {
+    flex: 1 1 auto;
+    margin-top: -0.5em;
+}
+
+/* FULL WIDTH GRIDS ==================================== */
+
+.row.wide-fit {
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+/* CENTER GRIDS ======================================== */
+
+.row.center {
+    justify-content: center;
+}
+
+.center .col {
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+/* COLUMN WIDTHS ====================================== */
+
+.col-span-1 {
+    flex-basis: 8.3333%;
+}
+
+.col-span-2 {
+    flex-basis: 16.6666%;
+}
+
+.col-span-3 {
+    flex-basis: 25%;
+}
+
+.col-span-4 {
+    flex-basis: 33.3333%;
+    padding: 0 15px;
+}
+
+.col-span-5 {
+    flex-basis: 41.6666%;
+}
+
+.col-span-6 {
+    flex-basis: 50%;
+}
+
+.col-span-7 {
+    flex-basis: 58.3333%;
+}
+
+.col-span-8 {
+    flex-basis: 66.6666%;
+}
+
+.col-span-9 {
+    flex-basis: 75%;
+}
+
+.col-span-10 {
+    flex-basis: 83.3333%;
+}
+
+.col-span-11 {
+    flex-basis: 91.6666%;
+}
+
+.col-span-12 {
+    flex-basis: 100%;
+}
+
+.fixed-width {
+    flex: 0 0 500px;
+}
+
+/* MOBILE MEDIA QUERIES================================== */
+
+@media all and (max-width: 768px) {
+    .col-span-1,
+    .col-span-2,
+    .col-span-3,
+    .col-span-4,
+    .col-span-5 {
+        flex-basis: 100%;
+    }
+    .col-span-6,
+    .col-span-7,
+    .col-span-8,
+    .col-span-9,
+    .col-span-10,
+    .col-span-11 {
+        flex-basis: 100%;
+    }
+    .nested .col {
+        flex-basis: 100%;
+    }
+}

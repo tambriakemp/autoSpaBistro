@@ -1,0 +1,496 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    color: #777777;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    letter-spacing: .5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #333333;
+    margin: 0;
+}
+
+h1 {
+    font-size: 52px;
+}
+
+h2 {
+    font-size: 42px;
+}
+
+h3 {
+    font-size: 32px;
+}
+
+h4 {
+    font-size: 22px;
+}
+
+h5 {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+h6 {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+ul {
+    padding: 0;
+}
+
+nav li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #777777;
+}
+
+i {
+    margin-bottom: 20px;
+    color: #ffcf00;
+}
+
+button {
+    background-color: #ffcf00;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 15px 60px;
+    text-transform: uppercase;
+}
+
+.login-nav {
+    /* display: none; */
+    background-color: #ffcd00;
+    width: 100%;
+    position: absolute;
+    margin-top: 25px;
+}
+
+section {
+    padding: 20px;
+    margin: 0;
+}
+
+footer {
+    margin: 80px 0;
+    width: 100%;
+}
+
+form {
+    margin-top: 30px;
+}
+
+input {
+    border: none;
+    display: block;
+    margin: 10px 0;
+    padding: 15px 10px;
+    width: 100%;
+}
+
+.spacing {
+    margin-right: 12px;
+}
+
+.extra-padding {
+    padding: 0 30px;
+}
+
+.spacing-left {
+    padding: 0 0 0 50px;
+}
+
+.sub-title {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.image {
+    width: 100%;
+}
+
+/* HEADER ===================================================== */
+
+.logo {
+    width: 90%;
+}
+
+/* header {
+    background-image: url('../images/header-img.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 650px;
+
+} */
+
+/* ADVANTAGE ===================================================== */
+
+.advantage {
+    background-color: #f8f4da;
+    text-align: center;
+}
+
+.card {
+    background-color: #ffffff;
+    margin-top: 40px;
+    padding: 50px;
+    width: 95%;
+}
+
+.card p {
+    font-size: 12px;
+}
+
+.card:hover {
+    background-color: #ffcf00;
+}
+
+.card:hover i {
+    color: #ffffff;
+}
+
+.card:hover h5 {
+    color: #ffffff;
+}
+
+.card:hover p {
+    color: #ffffff;
+}
+
+/* WHO WE ARE ===================================================== */
+
+.orange-line {
+    border-bottom: 2px solid #ffcf00;
+    width: 35px;
+    margin: 10px 0;
+}
+
+#signature {
+    position: absolute;
+}
+
+.signature {
+    color: #ffcf00;
+    text-transform: uppercase;
+    font-size: 10px;
+    margin: 110px 0 0 50px;
+}
+
+/* BISTRO ===================================================== */
+
+.bistro {
+    background-color: #3d3d3d;
+}
+
+.bistro h3 {
+    color: #ffcf00;
+}
+
+.bistro p,
+h6 {
+    color: #ffffff;
+}
+
+.bistro-image {
+    width: 100px;
+    height: auto;
+    float: left;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.menus {
+    margin-top: 40px;
+}
+
+.map {
+    margin: -10px 0;
+}
+
+/* OFFERS ===================================================== */
+
+.offers {
+    background-color: #f8f4da;
+    text-align: center;
+}
+
+.offers-card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    width: 95%;
+    margin-bottom: 20px;
+}
+
+.offer-row {
+    margin-top: 40px;
+}
+
+.offers-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.offers-card-container {
+    background-color: #ffffff;
+    padding: 15px 16px;
+    margin-top: -5px;
+}
+
+/* TESTIMONIES ===================================================== */
+
+.testimonies {
+    text-align: center;
+}
+
+.testimony {
+    width: 70%;
+    margin: 50px auto;
+}
+
+.testimony p {
+    font-size: 20px;
+    line-height: 32px;
+}
+
+.testimony-author {
+    font-size: 10px;
+    font-weight: 500;
+    margin: 40px 0;
+}
+
+/* HIGHLIGHT ===================================================== */
+
+.highlight {
+    background-color: #ffcf00;
+    color: #ffffff;
+    text-align: center;
+}
+
+.highlight h3 {
+    color: #ffffff;
+}
+
+.highlight i {
+    color: #ffffff;
+    margin: 35px 0 0 0;
+}
+
+/* LATEST NEWS ===================================================== */
+
+.latest-news {
+    background-color: #3d3d3d;
+    text-align: center;
+}
+
+.latest-news h2 {
+    color: #ffcf00;
+}
+
+.latest-news p {
+    color: #ffffff;
+}
+
+/* PAGE TITLE ===================================================== */
+
+.page-title-sec {
+    background-color: #333333;
+    text-align: center;
+    height: 450px;
+}
+
+.page-title-sec-content {
+    margin-top: 10%;
+}
+
+.page-title-sec h2 {
+    color: #ffcf00;
+}
+
+.page-title-sec p {
+    color: #fff;
+}
+
+/* LOGIN-REGISTRATION ============================================= */
+
+.login-reg-sec {
+    background-color: #f8f4da;
+    font-size: 12px;
+}
+
+.login-reg-sec button {
+    width: 100%;
+}
+
+.login-reg {
+    width: 300px;
+}
+
+.or {
+    height: 259px;
+    width: auto;
+    margin: 110px 20px 0 20px;
+}
+
+.narrow-font {
+    font-weight: 200;
+}
+
+/* KEEP IN TOUCH ================================================== */
+
+.keep-in-touch-sec {
+    background-color: #555555;
+    text-align: center;
+}
+
+.keep-in-touch-sec h3 {
+    color: #ffcf00;
+}
+
+.keep-in-touch-sec p {
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.keep-in-touch-sec input {
+    background-color: #353535;
+    text-transform: uppercase;
+    color: white;
+}
+
+.keep-in-touch-sec form {
+    color: white;
+}
+
+.keep-in-touch-sec input[name=name],
+.keep-in-touch-sec input[name=email] {
+    width: 49%;
+    float: left;
+    display: block;
+}
+
+.keep-in-touch-sec input[name=message] {
+    height: 100px;
+}
+
+textarea {
+    color: white;
+    width: 100%;
+    height: 150px;
+    padding: 12px 10px;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    border: none;
+    font-size: 11px;
+    background-color: #353535;
+    resize: none;
+}
+
+.btn-send-message {
+    margin-top: 30px;
+}
+
+/* FOOTER ================================================== */
+
+footer h4 {
+    font-weight: 500;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.triangle {
+    line-height: 2.2em;
+    list-style-image: url('../images/triangle-bullet.png');
+    width: 10px;
+    height: auto;
+    margin-left: 20px;
+}
+
+.copywrite {
+    border-top: 1px solid #eee;
+    padding: 30px 0px;
+    text-align: center;
+}
+
+/* .copywrite-right {
+    margin: 5px 0;
+} */
+
+.social-icon {
+    width: 18px;
+}
+
+@media only screen and (min-width: 668px) {
+    header {
+        /* display: initial; */
+    }
+    section {
+        padding: 80px;
+    }
+    /* ADVANTAGE ============================================= */
+    .card {
+        height: auto;
+        width: 350px;
+    }
+    /* OFFERS  ============================================= */
+    .offers-card {
+        width: 30%;
+    }
+    /* HIGHLIGHT ===================================================== */
+    .highlight {
+        background-color: #ffcf00;
+        color: #ffffff;
+        text-align: unset;
+    }
+    .highlight h3 {
+        color: #ffffff;
+    }
+    .highlight i {
+        color: #ffffff;
+        float: left;
+        margin: 0 10px;
+    }
+    /* LOGIN-REGISTRATION ============================================= */
+    .login-reg-sec {
+        background-color: #f8f4da;
+    }
+    footer {
+        grid-template-columns: 25% 25% 25% 25%;
+    }
+    .footer-col {
+        padding: 15px;
+    }
+    .footer-row {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+    .copywrite-left {
+        float: left;
+    }
+    .copywrite-right {
+        float: right;
+        padding-top: 10px;
+    }
+}

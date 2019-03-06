@@ -1,56 +1,13 @@
-// var createError = require('http-errors');
-// var express = require('express');
-// // var path = require('path');
-// var cookieParser = require('cookie-parser');
-// var logger = require('morgan');
-
-// var indexRouter = require('./routes/index');
-// var usersRouter = require('./routes/users');
-
-// var app = express();
-
-
-
-// app.use(logger('dev'));
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: false }));
-// app.use(cookieParser());
-
-// app.use('/', indexRouter);
-// app.use('/users', usersRouter);
-
-// // catch 404 and forward to error handler
-// app.use(function(req, res, next) {
-//   next(createError(404));
-// });
-
-// // error handler
-// app.use(function(err, req, res, next) {
-//   // set locals, only providing error in development
-//   res.locals.message = err.message;
-//   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-//   // render the error page
-//   res.status(err.status || 500);
-//   res.render('error');
-// });
-
-// module.exports = app;
-
 'use strict';
+
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const passport = require('passport');
+const bodyParser = require('body-parser');
 
-// Here we use destructuring assignment with renaming so the two variables
-// called router (from ./users and ./auth) have different names
-// For example:
-// const actorSurnames = { james: "Stewart", robert: "De Niro" };
-// const { james: jimmy, robert: bobby } = actorSurnames;
-// console.log(jimmy); // Stewart - the variable name is jimmy, not james
-// console.log(bobby); // De Niro - the variable name is bobby, not robert
+const { router: testimonyRouter } = require('./testimonies');
 const { router: usersRouter } = require('./users');
 const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
 
@@ -60,11 +17,9 @@ const { PORT, DATABASE_URL } = require('./config/config');
 
 const app = express();
 
-// Logging
-app.use(morgan('common'));
 
-// CORS
-app.use(function (req, res, next) {
+//MIDDLEWARE
+app.use(function (req, res, next) { //CORS
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
   res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
@@ -73,31 +28,31 @@ app.use(function (req, res, next) {
   }
   next();
 });
+app.use(morgan('common')); //Logging
+app.use(express.static('public'));
+app.use('/api/users/', usersRouter);
+app.use('/api/testimonies/', testimonyRouter);
+app.use('/api/auth/', authRouter);
+app.use(bodyParser.urlencoded({ extended: true })); 
+
 
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 
-
-app.use(express.static('public'));
-
-app.use('/api/users/', usersRouter);
-app.use('/api/auth/', authRouter);
-
 const jwtAuth = passport.authenticate('jwt', { session: false });
 
 app.get('/api/protected', jwtAuth, (req, res) => {
+  // res.redirect('../public/dashboard.html')
   return res.json({
-    data: 'rosebud'
+    data: 'rosebud' //extract username 
   });
 });
 
-
+//In case we make a HTTP request that is unhandled by our Express Server, we return a 404 status code and message
 app.use('*', (req, res) => {
   return res.status(404).json({ message: 'Not Found' });
 });
 
-// Referenced by both runServer and closeServer. closeServer
-// assumes runServer has run and set `server` to a server object
 let server;
 
 function runServer() {

@@ -314,11 +314,11 @@ h6 {
 .page-title-sec {
     background-color: #333333;
     text-align: center;
-    height: 450px;
+    height: 350px;
 }
 
 .page-title-sec-content {
-    margin-top: 10%;
+    margin-top: 45%;
 }
 
 .page-title-sec h2 {
@@ -340,14 +340,12 @@ h6 {
     width: 100%;
 }
 
-.login-reg {
+/* .login-reg {
     width: 300px;
-}
+} */
 
 .or {
-    height: 259px;
-    width: auto;
-    margin: 110px 20px 0 20px;
+  display: none;
 }
 
 .narrow-font {
@@ -408,6 +406,20 @@ textarea {
     margin-top: 30px;
 }
 
+/* Submit Testimoney  ================================================== */
+.testimony-row textarea{
+    color: #333333;
+    width: 100%;
+    height: 150px;
+    padding: 12px 10px;
+    box-sizing: border-box;
+    border: none;
+    font-size: 11px;
+    background-color: white;
+    resize: none;
+    text-transform: none;
+}
+
 /* FOOTER ================================================== */
 
 footer h4 {
@@ -445,6 +457,15 @@ footer h4 {
     section {
         padding: 80px;
     }
+    /* PAGE TITLE ===================================================== */
+
+    .page-title-sec {
+        height: 450px;
+    }
+    
+    .page-title-sec-content {
+        margin-top: 10%;
+    }
     /* ADVANTAGE ============================================= */
     .card {
         height: auto;
@@ -472,6 +493,22 @@ footer h4 {
     .login-reg-sec {
         background-color: #f8f4da;
     }
+    .login-row {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+        justify-content: center;
+    }
+    .or {
+        display: initial;
+        height: 259px;
+        width: auto;
+        margin: 110px 20px 0 20px;
+    }
+
     footer {
         grid-template-columns: 25% 25% 25% 25%;
     }

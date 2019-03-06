@@ -53,4 +53,8 @@ const jwtStrategy = new JwtStrategy(
   }
 );
 
+// what is the below doing
+//const localPassportMiddleware = passport.authenticate('local', { session: false });
+//const jwtPassportMiddleware = passport.authenticate('jwt', { session: false });
+
 module.exports = { localStrategy, jwtStrategy };

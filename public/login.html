@@ -6,12 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Sign In | Spa Bistro</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/grid.css" />
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/grid.css" /> -->
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/cssgrid.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/main.css" />
-
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700,800" rel="stylesheet">
-
-    <script src="js/main.js"></script>
+   <script src="js/main.js"></script>
 </head>
 
 <body>
@@ -27,137 +26,152 @@
             </ul>
         </nav>
     </header>
-    <section class="page-title-sec row center">
+    <section class="page-title-sec">
         <div class="page-title-sec-content">
             <h2>Login or Register.</h2>
             <p class="breadcrumbs">Home > Login</p>
         </div>
 
     </section>
-    <section class="login-reg-sec row center">
-        <div class="login-reg col col-span-3">
-            <h3>Login
-                <span class="narrow-font">Now</span>
-            </h3>
-            <p>Login to our website</p>
-            <form>
-                <input type="text" name="username" placeholder="Username">
-                <input type="password" name="password" placeholder="password">
-                <button>Login Now</button>
-            </form>
-            <p>* Denotes manadatory field</p>
-        </div>
-        <img src="images/or.png" class="or" alt="or image divider">
-        <div class="login-reg col col-span-3">
-            <h3>Register
-                <span class="narrow-font">Now</span>
-            </h3>
-            <p>Requried Information for Account Creation</p>
-            <form method="POST" action="/api/users" id="user-register" enctype='application/json'>
-                <input type="text" name="username" placeholder="Username" id="username">
-                <input type="password" name="password" placeholder="Password">
-                <input type="text" name="email" placeholder="Email Address">
-                <input type="submit">
-            </form>
+    <section class="login-reg-sec">
+        <div class="wrapper">
+            <div class="login-row">
+                <div class="col-xl-4">
+                    <h3>Login
+                        <span class="narrow-font">Now</span>
+                    </h3>
+                    <p>Login to our website</p>
+                    <form action="/api/auth/login" enctype="application/json">
+                        <input type="text" name="username" placeholder="Username">
+                        <input type="password" name="password" placeholder="password">
+                        <button>Login Now</button>
+                    </form>
+                    <p>* Denotes manadatory field</p>
+                </div>
+
+                <img src="images/or.png" class="or" alt="or image divider">
+                <div class="col-xl-4">
+                    <h3>Register
+                        <span class="narrow-font">Now</span>
+                    </h3>
+                    <p>Requried Information for Account Creation</p>
+                    <form method="post" action="/api/users" id="user-register" enctype="application/json">
+                        <input type="text" name="username" placeholder="Username" id="username">
+                        <input type="password" name="password" placeholder="Password">
+                        <input type="text" name="email" placeholder="Email Address">
+                        <input type="text" name="firstName" placeholder="First Name">
+                        <input type="text" name="lastName" placeholder="Last Name">
+                        <input type="submit">
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
-    <section class="keep-in-touch-sec row center">
-        <div class="col-span-6"> 
-            <p>Contact Us Now</p>
-            <h3><span class="narrow-font">Keep</span> In Touch</h3>
-            <form>
-                <input type="text" name="name" placeholder="Name" class="spacing">
-                <input type="text" name="email" placeholder="Email Address">
-                <input type="text" name "subject" placeholder="Subject">
-                <textarea name="message" placeholder="Message"></textarea>
-                <button class="btn-send-message">Send Message Now</button>
-            </form>
+    <section class="keep-in-touch-sec">
+        <div class="row">
+            <div class="col-xl-7">
+                <p>Contact Us Now</p>
+                <h3>
+                    <span class="narrow-font">Keep</span> In Touch</h3>
+                <form>
+                    <input type="text" name="name" placeholder="Name" class="col-xl-6 spacing">
+                    <input type="text" name="email" placeholder="Email Address" class="col-xl-6">
+                    <input type="text" name "subject" placeholder="Subject">
+                    <textarea name="message" placeholder="Message"></textarea>
+                    <button class="btn-send-message">Send Message Now</button>
+                </form>
+            </div>
         </div>
-    </section>
-    <footer class="row">
-        <div class="col-span-3 spacing-left">
-            <img src="images/logo.png" class="logo" alt="logo">
-            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua. 
-            </p>
-            <h3 class="footer-phone">404.123.1234</h3>
+    </section> 
+   <footer>
+        <div class="wrapper">
+            <div class="footer-row">
+                <div class="col-xl-3">
+                    <img src="images/logo.png" class="logo" alt="logo">
+                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                        dolore magna aliqua.
+                    </p>
+                    <h3 class="footer-phone">404.123.1234</h3>
+
+                </div>
+                <div class="col-xl-3 spacing-left ">
+
+                    <h4>Useful links</h4>
+                    <ul class="triangle">
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-xl-3 spacing-left  ">
+                    <h4>Our Info</h4>
+                    <ul class="triangle">
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-xl-3 spacing-left">
+                    <h4>Account Information</h4>
+                    <ul class="triangle">
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
         </div>
-        <div class="col-span-3 spacing-left">
-
-            <h4>Useful links</h4>
-            <ul class="triangle">
-                <li>
-                    <a href="#">Home</a>
-                </li>
-                <li>
-                    <a href="#">Home</a>
-                </li>
-                <li>
-                    <a href="#">Home</a>
-                </li>
-                <li>
-                    <a href="#">Home</a>
-                </li>
-                <li>
-                    <a href="#">Home</a>
-                </li>
-            </ul>
-        </div>
-        <div class="col-span-3 spacing-left">
-            <h4>Our Info</h4>
-            <ul class="triangle">
-                <li>
-                    <a href="#">Home</a>
-                </li>
-                <li>
-                    <a href="#">Home</a>
-                </li>
-                <li>
-                    <a href="#">Home</a>
-                </li>
-                <li>
-                    <a href="#">Home</a>
-                </li>
-                <li>
-                    <a href="#">Home</a>
-                </li>
-            </ul>
-        </div>
-        <div class="col-span-3 spacing-left">
-            <h4>Account Info</h4>
-            <ul class="triangle">
-                <li>
-                    <a href="#">Home</a>
-                </li>
-                <li>
-                    <a href="#">Home</a>
-                </li>
-                <li>
-                    <a href="#">Home</a>
-                </li>
-                <li>
-                    <a href="#">Home</a>
-                </li>
-                <li>
-                    <a href="#">Home</a>
-                </li>
-            </ul>
-        </div>
-
-
-
     </footer>
-        <div class="copywrite">
-            <div class="copywrite-left">
-                <p>@2018 Spa Bistro</p>
-            </div>
-            <div class="copywrite-right">
-                <img src="images/facebook.svg" class="social-icon spacing" alt="facebook icon"><span class="spacing">facebook</span>
-                <img src="images/twitter.svg" class="social-icon spacing" alt="twitter icon"><span class="spacing">twitter</span>
-                <img src="images/instagram.svg" class="social-icon spacing" alt="instagram icon"><span class="spacing">instagram</span>
-            </div>
+    <div class="copywrite wrapper">
+        <div class="copywrite-left">
+            <p>@2018 Spa Bistro</p>
         </div>
+        <div class="copywrite-right">
+            <img src="images/facebook.svg" class="social-icon spacing" alt="facebook icon">
+            <span class="spacing">facebook</span>
+            <img src="images/twitter.svg" class="social-icon spacing" alt="twitter icon">
+            <span class="spacing">twitter</span>
+            <img src="images/instagram.svg" class="social-icon spacing" alt="instagram icon">
+            <span class="spacing">instagram</span>
+        </div>
+    </div>
 </body>
 
 </html>

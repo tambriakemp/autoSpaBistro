@@ -28,25 +28,25 @@ app.use(function (req, res, next) { //CORS
   }
   next();
 });
+app.use(bodyParser.urlencoded({ extended: true })); 
+app.use(express.json());
 app.use(morgan('common')); //Logging
-app.use(express.static('public'));
 app.use('/api/users/', usersRouter);
 app.use('/api/testimonies/', testimonyRouter);
 app.use('/api/auth/', authRouter);
-app.use(bodyParser.urlencoded({ extended: true })); 
+app.use(express.static('public'));
 
 
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 
-const jwtAuth = passport.authenticate('jwt', { session: false });
+// const jwtAuth = passport.authenticate('jwt', { session: false });
 
-app.get('/api/protected', jwtAuth, (req, res) => {
-  // res.redirect('../public/dashboard.html')
-  return res.json({
-    data: 'rosebud' //extract username 
-  });
-});
+// app.get('/api/protected', jwtAuth, (req, res) => {
+//   return res.json({
+//     data: 'rosebud' //extract username 
+//   });
+// });
 
 //In case we make a HTTP request that is unhandled by our Express Server, we return a 404 status code and message
 app.use('*', (req, res) => {

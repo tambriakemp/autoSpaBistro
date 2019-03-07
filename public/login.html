@@ -41,7 +41,7 @@
                         <span class="narrow-font">Now</span>
                     </h3>
                     <p>Login to our website</p>
-                    <form action="/api/auth/login" enctype="application/json">
+                    <form method="post" action="/api/users" enctype="application/json">
                         <input type="text" name="username" placeholder="Username">
                         <input type="password" name="password" placeholder="password">
                         <button>Login Now</button>
@@ -56,7 +56,7 @@
                     </h3>
                     <p>Requried Information for Account Creation</p>
                     <form method="post" action="/api/users" id="user-register" enctype="application/json">
-                        <input type="text" name="username" placeholder="Username" id="username">
+                        <input type="text" name="username" placeholder="Username" >
                         <input type="password" name="password" placeholder="Password">
                         <input type="text" name="email" placeholder="Email Address">
                         <input type="text" name="firstName" placeholder="First Name">

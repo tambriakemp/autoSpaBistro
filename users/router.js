@@ -5,15 +5,7 @@ const {User} = require('./models');
 const router = express.Router();
 
 
-
-// A protected endpoint which needs a valid JWT to access it
-// router.get('/api/protected', jwtAuth, (req, res) => {
-//   return res.json({
-//     data: 'rosebud'
-//   });
-// });
-
-// POST TO REGISTER USER =======================================
+// POST TO CREATE USER ===================================
 router.post('/', (req, res) => {
 
   console.log(req.body);
@@ -131,7 +123,7 @@ router.post('/', (req, res) => {
     });
 });
 
-// GET ==========================================
+// GET ALL USERS =========================================
 router.get('/', (req, res) => {
   
   return User.find()
@@ -139,4 +131,14 @@ router.get('/', (req, res) => {
     .catch(err => res.status(500).json({message: 'Internal server error'}));
 });
 
-module.exports = {router};
+// GET ONE USER ==========================================
+router.get('/:id', (req, res) => {
+
+  return User.findById(req.params.id)
+      .then(user => res.json(user.serialize()))
+      .catch(err => res.status(500).json({message: 'Internal server error'}));
+      
+});
+
+
+module.exports = { router };

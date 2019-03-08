@@ -21,16 +21,18 @@ router.use(bodyParser.json());
 
 // The user provides a username and password to login
 router.post('/login', localAuth, (req, res) => { //go to local strategies in strategies.js
+  const user = req.user.serialize();
   const authToken = createAuthToken(req.user.serialize());
-  res.json({authToken});
+  res.json({authToken, user});
 });
 
 const jwtAuth = passport.authenticate('jwt', {session: false});
 
 // The user exchanges a valid JWT for a new one with a later expiration
 router.post('/refresh', jwtAuth, (req, res) => {
+  const user = request.user; 
   const authToken = createAuthToken(req.user);
-  res.json({authToken});
+  res.json({authToken, user});
 });
 
 module.exports = {router};

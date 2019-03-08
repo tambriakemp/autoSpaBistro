@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/cssgrid.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/main.css" />
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700,800" rel="stylesheet">
-   <script src="js/main.js"></script>
+ 
 </head>
 
 <body>
@@ -41,10 +41,10 @@
                         <span class="narrow-font">Now</span>
                     </h3>
                     <p>Login to our website</p>
-                    <form method="post" action="/api/users" enctype="application/json">
-                        <input type="text" name="username" placeholder="Username">
-                        <input type="password" name="password" placeholder="password">
-                        <button>Login Now</button>
+                    <form id="login-form" >
+                        <input type="text" id="username-login" name="username" placeholder="Username" required>
+                        <input type="password" id="password-login" name="password" placeholder="password" autocomplete="off" required>
+                        <input type="submit">
                     </form>
                     <p>* Denotes manadatory field</p>
                 </div>
@@ -55,12 +55,11 @@
                         <span class="narrow-font">Now</span>
                     </h3>
                     <p>Requried Information for Account Creation</p>
-                    <form method="post" action="/api/users" id="user-register" enctype="application/json">
-                        <input type="text" name="username" placeholder="Username" >
-                        <input type="password" name="password" placeholder="Password">
-                        <input type="text" name="email" placeholder="Email Address">
-                        <input type="text" name="firstName" placeholder="First Name">
-                        <input type="text" name="lastName" placeholder="Last Name">
+                    <form id="sign-up-form">
+                        <input type="text" id="name" name="name" placeholder="Name" required>
+                        <input type="text" id="username" name="username" placeholder="Username" required>
+                        <input type="password" id="password" name="password" placeholder="Password" autocomplete="off" required>
+                        <input type="text" id="email" name="email" placeholder="Email Address" required>
                         <input type="submit">
                     </form>
                 </div>
@@ -82,8 +81,8 @@
                 </form>
             </div>
         </div>
-    </section> 
-   <footer>
+    </section>
+    <footer>
         <div class="wrapper">
             <div class="footer-row">
                 <div class="col-xl-3">
@@ -172,6 +171,15 @@
             <span class="spacing">instagram</span>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="utilities/cache.js"></script>
+    <script src="utilities/render.js"></script>
+    <script src="utilities/http.js"></script>
+    <script src="auth/auth.js"></script>
+
+    <!-- <script src="./javascript/index.js"></script> -->
 </body>
 
 </html>

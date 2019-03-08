@@ -40,13 +40,6 @@ app.use(express.static('public'));
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 
-// const jwtAuth = passport.authenticate('jwt', { session: false });
-
-// app.get('/api/protected', jwtAuth, (req, res) => {
-//   return res.json({
-//     data: 'rosebud' //extract username 
-//   });
-// });
 
 //In case we make a HTTP request that is unhandled by our Express Server, we return a 404 status code and message
 app.use('*', (req, res) => {

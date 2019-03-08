@@ -10,7 +10,6 @@
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/cssgrid.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/main.css" />
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700,800" rel="stylesheet">
-   <script src="js/main.js"></script>
 </head>
 
 <body>
@@ -42,9 +41,9 @@
                         <span class="narrow-font">Testimony</span>
                     </h3>
                     <p>If you liked the service you received, submit a testimony that will be displayed on our website! Thank you for your business.</p>
-                    <form method="post" action="/api/testimonies" id="user-register" enctype="application/json">
-                        <textarea name="userTestimony" placeholder="Enter Testimony"></textarea>
-                        <input type="userDisplayName" name="userDisplayName" placeholder="Choose Display Name">
+                    <form id="testimony-form">
+                        <textarea name="userTestimony" id="userTestimony" placeholder="Enter Testimony"></textarea>
+                        <input type="userDisplayName" id="userDisplayName" name="userDisplayName" placeholder="Choose Display Name">
                         <input type="submit">
                     </form>
                 </div>
@@ -57,7 +56,7 @@
                 <p>Testimonies you submitted</p>
                 <h3>
                     <span class="narrow-font">Past Submitted</span> Testimonies</h3>
-
+                    <div class="testimony-list"></div>
             </div>
         </div>
     </section> 
@@ -150,6 +149,15 @@
             <span class="spacing">instagram</span>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="utilities/cache.js"></script>
+<script src="utilities/render.js"></script>
+<script src="utilities/http.js"></script>
+<script src="testimonies/create.js"></script>
+<script src="testimonies/index.js"></script>
+
 </body>
 
 </html>

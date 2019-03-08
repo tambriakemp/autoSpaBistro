@@ -10,7 +10,7 @@ router.post('/', (req, res) => {
 
   console.log(req.body);
 
-  const requiredFields = ['username', 'password','email'];
+  const requiredFields = ['username', 'name', 'password','email'];
   const missingField = requiredFields.find(field => !(field in req.body));
 
 
@@ -23,7 +23,7 @@ router.post('/', (req, res) => {
     });
   }
 
-  const stringFields = ['username', 'password', 'firstName', 'lastName','email'];
+  const stringFields = ['username', 'password', 'name', 'email'];
   const nonStringField = stringFields.find(
     field => field in req.body && typeof req.body[field] !== 'string'
   );
@@ -84,10 +84,9 @@ router.post('/', (req, res) => {
     });
   }
 
-  let {username, password, firstName = '', lastName = '',email} = req.body;
+  let {username, password, name = '', email} = req.body;
 
-  firstName = firstName.trim();
-  lastName = lastName.trim();
+  name = name.trim();
   email = email.trim();
 
   return User.find({username})
@@ -107,8 +106,7 @@ router.post('/', (req, res) => {
       return User.create({
         username,
         password: hash,
-        firstName,
-        lastName,
+        name,
         email
       });
     })

@@ -10,7 +10,15 @@ function onReady() {
     STATE.authUser = CACHE.getAuthenticatedUserFromCache();
 
     $('#testimony-form').on('submit', onCreateSubmit);
+    console.log('this page loaded');
+    if (STATE.authUser) {
+        HTTP.getUserTestimonies({
+            authToken: STATE.authUser.authToken,
+            onSuccess: RENDER.renderTestimonyList
+        });
+    } 
 }
+
 
 function onCreateSubmit(event) {
     event.preventDefault();

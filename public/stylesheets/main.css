@@ -1,4 +1,6 @@
 * {
+    /* margin: 0; */
+    padding: 0;
     box-sizing: border-box;
 }
 
@@ -18,15 +20,16 @@ h4,
 h5,
 h6 {
     color: #333333;
+    padding: 0;
     margin: 0;
 }
 
 h1 {
-    font-size: 52px;
+    font-size: 32px;
 }
 
 h2 {
-    font-size: 42px;
+    font-size: 2.8em;
 }
 
 h3 {
@@ -53,6 +56,7 @@ ul {
 
 nav li {
     list-style: none;
+    float: left;
 }
 
 a {
@@ -65,22 +69,23 @@ i {
     color: #ffcf00;
 }
 
+p {
+    padding: 0;
+    margin: 0;
+}
+
 button {
     background-color: #ffcf00;
     border: none;
-    color: #fff;
+    color: #777777;
     font-size: 14px;
     font-weight: 700;
     padding: 15px 60px;
     text-transform: uppercase;
 }
 
-.login-nav {
-    /* display: none; */
-    background-color: #ffcd00;
-    width: 100%;
-    position: absolute;
-    margin-top: 25px;
+button a {
+    color: #ffffff;
 }
 
 section {
@@ -105,8 +110,18 @@ input {
     width: 100%;
 }
 
+input[type=submit] {
+    background-color: #ffcf00;
+    color: #777777;
+    text-transform: uppercase;
+}
+
 .spacing {
     margin-right: 12px;
+}
+
+.space-below {
+    margin-bottom: 25px;
 }
 
 .extra-padding {
@@ -114,7 +129,7 @@ input {
 }
 
 .spacing-left {
-    padding: 0 0 0 50px;
+    padding: 0 0 0 10px;
 }
 
 .sub-title {
@@ -128,56 +143,131 @@ input {
     width: 100%;
 }
 
-/* HEADER ===================================================== */
-
-.logo {
-    width: 90%;
+.yellow-bg {
+    background-color: #f8f4da;
 }
 
-/* header {
-    background-image: url('../images/header-img.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    height: 650px;
-
-} */
-
-/* ADVANTAGE ===================================================== */
-
-.advantage {
-    background-color: #f8f4da;
+.center-content {
     text-align: center;
 }
 
-.card {
+/* HEADER ================================================== */
+
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/header-img.jpg');
+    background-size: cover;
+    min-height: 700px;
+    background-position: center;
+}
+
+.hero .hero-header .logo {
+    font-size: 2em;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: #ffcf00;
+}
+
+.hero-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 0;
+}
+
+.hero .hero-header nav li {
+    display: inline;
+    padding-left: 20px;
+}
+
+.hero .hero-header nav li a {
+    color: #fff;
+}
+
+.hero-content {
+    text-align: center;
+    margin-top: 140px;
+}
+
+.hero-content .title {
+    color: #fff;
+    padding: 20px 0;
+    font-size: 2em;
+    text-transform: capitalize;
+    animation-delay: .6s;
+}
+
+.hero-content .desc {
+    color: #fff;
+    max-width: 450px;
+    margin: 0 auto;
+    line-height: 1.5;
+    animation-delay: .8s;
+}
+
+.hero-content .action {
+    border: none;
+    padding: 16px 50px;
+    text-transform: capitalize;
+    color: #fff;
+    font-size: 1.2em;
+    background: #ffcf00;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    animation-delay: 1s;
+}
+
+.logo img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+}
+
+.pages-topbar a {
+    color: #333333;
+}
+
+.pages-topbar {
+    background-color: #ffcd00;
+    width: 100%;
+    position: absolute;
+    margin-top: 25px;
+    padding: 10px 0;
+}
+
+.pages-nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* ADVANTAGE ================================================ */
+
+.advantage-card {
     background-color: #ffffff;
     margin-top: 40px;
     padding: 50px;
-    width: 95%;
 }
 
-.card p {
+.advantage-card p {
     font-size: 12px;
 }
 
-.card:hover {
+.advantage-card:hover {
     background-color: #ffcf00;
 }
 
-.card:hover i {
+.advantage-card:hover i {
     color: #ffffff;
 }
 
-.card:hover h5 {
+.advantage-card:hover h5 {
     color: #ffffff;
 }
 
-.card:hover p {
+.advantage-card:hover p {
     color: #ffffff;
 }
 
-/* WHO WE ARE ===================================================== */
+/* WHO WE ARE =============================================== */
 
 .orange-line {
     border-bottom: 2px solid #ffcf00;
@@ -216,7 +306,6 @@ h6 {
     height: auto;
     float: left;
     margin-right: 10px;
-    display: inline-block;
 }
 
 .menus {
@@ -227,35 +316,15 @@ h6 {
     margin: -10px 0;
 }
 
-/* OFFERS ===================================================== */
+/* MEMBERSHIP============================================== */
 
-.offers {
-    background-color: #f8f4da;
-    text-align: center;
-}
-
-.offers-card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
-    width: 95%;
-    margin-bottom: 20px;
-}
-
-.offer-row {
-    margin-top: 40px;
-}
-
-.offers-card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-
-.offers-card-container {
+.card-container {
     background-color: #ffffff;
     padding: 15px 16px;
     margin-top: -5px;
 }
 
-/* TESTIMONIES ===================================================== */
+/* TESTIMONIES ================================================ */
 
 .testimonies {
     text-align: center;
@@ -277,39 +346,29 @@ h6 {
     margin: 40px 0;
 }
 
-/* HIGHLIGHT ===================================================== */
+/* HIGHLIGHT ================================================= */
 
 .highlight {
-    background-color: #ffcf00;
-    color: #ffffff;
-    text-align: center;
+    display: none;
 }
 
-.highlight h3 {
-    color: #ffffff;
-}
+/* CALLOUT ================================================== */
 
-.highlight i {
-    color: #ffffff;
-    margin: 35px 0 0 0;
-}
-
-/* LATEST NEWS ===================================================== */
-
-.latest-news {
+.callout {
     background-color: #3d3d3d;
     text-align: center;
+    padding: 100px 0;
 }
 
-.latest-news h2 {
+.callout h2 {
     color: #ffcf00;
 }
 
-.latest-news p {
+.callout p {
     color: #ffffff;
 }
 
-/* PAGE TITLE ===================================================== */
+/* PAGE TITLE ============================================== */
 
 .page-title-sec {
     background-color: #333333;
@@ -318,7 +377,7 @@ h6 {
 }
 
 .page-title-sec-content {
-    margin-top: 45%;
+    margin-top: 150px;
 }
 
 .page-title-sec h2 {
@@ -329,10 +388,9 @@ h6 {
     color: #fff;
 }
 
-/* LOGIN-REGISTRATION ============================================= */
+/* LOGIN-REGISTRATION =======================================*/
 
 .login-reg-sec {
-    background-color: #f8f4da;
     font-size: 12px;
 }
 
@@ -340,19 +398,15 @@ h6 {
     width: 100%;
 }
 
-/* .login-reg {
-    width: 300px;
-} */
-
 .or {
-  display: none;
+    display: none;
 }
 
 .narrow-font {
     font-weight: 200;
 }
 
-/* KEEP IN TOUCH ================================================== */
+/* KEEP IN TOUCH ============================================ */
 
 .keep-in-touch-sec {
     background-color: #555555;
@@ -406,8 +460,9 @@ textarea {
     margin-top: 30px;
 }
 
-/* Submit Testimoney  ================================================== */
-.testimony-row textarea{
+/* Submit Testimoney  ======================================== */
+
+.testimony-row textarea {
     color: #333333;
     width: 100%;
     height: 150px;
@@ -431,7 +486,6 @@ footer h4 {
 .triangle {
     line-height: 2.2em;
     list-style-image: url('../images/triangle-bullet.png');
-    width: 10px;
     height: auto;
     margin-left: 20px;
 }
@@ -442,40 +496,98 @@ footer h4 {
     text-align: center;
 }
 
-/* .copywrite-right {
-    margin: 5px 0;
-} */
-
 .social-icon {
     width: 18px;
 }
 
-@media only screen and (min-width: 668px) {
-    header {
-        /* display: initial; */
+.not-found h3 {
+    font-size: 62px;
+}
+
+@media only screen and (min-width: 667px) {
+    .or {
+        display: none;
+    }
+    div.pages-nav nav ul li a {
+        font-size: 1.2em;
+        margin-left: 20px;
     }
     section {
         padding: 80px;
     }
-    /* PAGE TITLE ===================================================== */
+    /* HEADER ============================================= */
+    .hero .hero-header nav li a {
+        color: #ffffff;
+        font-size: 1.2em;
+        text-transform: capitalize;
+    }
+    nav {
+        margin-top: 10px;
+    }
+    .pop-in {
+        animation: pop-in .6s cubic-bezier(0, 0.9, 0.3, 1.2) forwards;
+        opacity: 0;
+    }
+    @keyframes pop-in {
+        0% {
+            opacity: 0;
+            transform: translateY(-4rem) scale(.8);
+        }
+        100% {
+            opacity: 1;
+            transform: none;
+        }
+    }
+    /* HIGHLIGHT ============================================= */
+    .highlight {
+        background-color: #ffcf00;
+        color: #ffffff;
+        text-align: center;
+        display: inherit;
+    }
+    .highlight h3 {
+        color: #ffffff;
+    }
+    .highlight i {
+        color: #ffffff;
+        margin: 35px 0 0 0;
+    }
+}
 
+@media only screen and (min-width: 1224px) {
+    /* HEADER ================================================ */
+    .hero-header {
+        padding: 50px 0;
+    }
+    .hero-content .title {
+        font-size: 2.6em;
+    }
+    .hero .hero-header nav {
+        display: block;
+    }
+    .hero-content .desc {
+        max-width: 650px;
+    }
+    .hero-content {
+        margin-top: 100px;
+    }
+    .logo img {
+        max-width: 300px;
+    }
+
+    .pages-nav nav ul li a {
+        color: #000000;
+    }
+    /* PAGE TITLE ============================================= */
     .page-title-sec {
         height: 450px;
-    }
-    
-    .page-title-sec-content {
-        margin-top: 10%;
     }
     /* ADVANTAGE ============================================= */
     .card {
         height: auto;
         width: 350px;
     }
-    /* OFFERS  ============================================= */
-    .offers-card {
-        width: 30%;
-    }
-    /* HIGHLIGHT ===================================================== */
+    /* HIGHLIGHT ============================================= */
     .highlight {
         background-color: #ffcf00;
         color: #ffffff;
@@ -489,7 +601,7 @@ footer h4 {
         float: left;
         margin: 0 10px;
     }
-    /* LOGIN-REGISTRATION ============================================= */
+    /* LOGIN-REGISTRATION ==================================== */
     .login-reg-sec {
         background-color: #f8f4da;
     }
@@ -508,20 +620,8 @@ footer h4 {
         width: auto;
         margin: 110px 20px 0 20px;
     }
-
-    footer {
-        grid-template-columns: 25% 25% 25% 25%;
-    }
-    .footer-col {
-        padding: 15px;
-    }
-    .footer-row {
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-        margin-right: -15px;
-        margin-left: -15px;
+    .spacing-left {
+        padding: 0 0 0 50px;
     }
     .copywrite-left {
         float: left;

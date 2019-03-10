@@ -20,3 +20,5 @@
 //     // $('#note-list').on('click', '#delete-note-btn', onDeleteNoteBtnClick);
 //     // $('#note-list').on('click', '#note-card', onNoteCardClick);
 // }
+
+  

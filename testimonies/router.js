@@ -6,7 +6,9 @@ const passport = require('passport');
 const router = express.Router();
 const jwtAuth = passport.authenticate('jwt', { session: false });
 
-
+router.get('public/dashboard.html', jwtAuth, (req, res) => {
+ console.log('protected');
+});
 // GET ALL TESTIMONIES ========================================
 router.get('/', (req, res) => {
   console.log('testimony get');
@@ -18,7 +20,7 @@ router.get('/', (req, res) => {
     });
 });
 
-// GET USER TESTIMONY =========================================
+// GET SINGLE TESTIMONY =========================================
 router.get('/:id', jwtAuth, (req, res) => {
   console.log('testimony for one user');
 
@@ -32,6 +34,25 @@ router.get('/:id', jwtAuth, (req, res) => {
     .catch(error => {
       return res.json(error);
     });
+});
+
+// GET SPECIFIC USER TESTIMONIES =========================================
+
+router.get('/', jwtAuth, (req, res) => {
+  // Step 1: Attempt to retrieve all notes using Mongoose.Model.find()
+  // https://mongoosejs.com/docs/api.html#model_Model.find
+  Testimony.find({ user: req.user.id })
+      .populate('user')
+      .then(testimonies => {
+          // Step 2A: Return the correct HTTP status code, and the notes correctly formatted via serialization.
+          return res.status(HTTP_STATUS_CODES.OK).json(
+            testimonies.map(testimony => testimony.serialize())
+          );
+      })
+      .catch(error => {
+          // Step 2B: If an error ocurred, return an error HTTP status code and the error in JSON format.
+          return res.status(HTTP_STATUS_CODES.INTERNAL_SERVER_ERROR).json(error);
+      });
 });
 
 // POST TESTIMONY =============================================

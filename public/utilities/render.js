@@ -5,6 +5,13 @@ window.RENDER_MODULE = {
 };
 
 function renderTestimonyList(testimonies) {
+    // $('#testimony-list').html('');
+
+    for (let i = 0; i < testimonies.length; i++) {
+        $('#testimony-list').append(`
+        <li class="news" role="list"><p>${testimonies[i].userTestimony}</p>
+    </li>`)
+    }
     const testimonyHtml = testimonies.map(TestimonyToHtml).join('<hr/>');
     $('#testimony-list').html(`HERE`,testimonyHtml);
     function TestimonyToHtml(testimony) {

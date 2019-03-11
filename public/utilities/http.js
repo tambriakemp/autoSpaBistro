@@ -4,7 +4,8 @@ window.HTTP_MODULE = {
     getUserTestimonies,
     getAllTestimonies,
     createTestimony,
-    deleteTestimony
+    deleteTestimony,
+    updateTestimony
 };
 
 function signupUser(options) {
@@ -108,21 +109,43 @@ function getAllTestimonies(options) {
 }
 
 function deleteTestimony(options) {
-    const { id, jwtToken, onSuccess, onError } = options;
+    const { testimonyID, authToken, onSuccess, onError } = options;
     $.ajax({
         type: 'delete',
-        url: `/api/testimonies/${id}`,
+        url: `/api/testimonies/${testimonyID}`,
         contentType: 'application/json',
         dataType: 'json',
         data: undefined,
         beforeSend: function (xhr) {
-            xhr.setRequestHeader('Authorization', `Bearer ${jwtToken}`);
+            xhr.setRequestHeader('Authorization', `Bearer ${authToken}`);
         },
         success: onSuccess,
         error: err => {
             console.error(err);
             if (onError) {
                 onError(err);
+            }
+        }
+    });
+}
+
+function updateTestimony(options) {
+    const {authToken, testimonyID, updateTestimony, onSuccess, onError } = options;
+
+    $.ajax({
+        type: 'PUT',
+        url: `/api/testimonies/${testimonyID}`,
+        contentType: 'application/json',
+        dataType: 'json',
+        data: JSON.stringify(updateTestimony),
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader('Authorization', `Bearer ${authToken}`);
+        },
+        success: onSuccess,
+        error: err => {
+            console.error(err);
+            if (onError) {
+                onError();
             }
         }
     });

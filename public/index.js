@@ -12,7 +12,7 @@ function loadTestimonyCarousel() {
   const testimonies = HTTP.getAllTestimonies(
     {
       onSuccess: function (data) {
-        for (let i = 0; i < 6; i++) {
+        for (let i= (data.length-1); i >= (data.length-6); i--) {
           $('.testimony').append(`<div><p>${data[i].userTestimony}
           </p>
           <div class="testimony-author">- ${data[i].userDisplayName}</div>

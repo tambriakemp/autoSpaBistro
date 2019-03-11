@@ -10,10 +10,11 @@ function onReady() {
     STATE.authUser = CACHE.getAuthenticatedUserFromCache();
     pastSubmittedTestimonies();
 
-    $('#logout-btn').on('click', onLogoutBtnClick);
+    $('body').on('click','#logout-btn', onLogoutBtnClick);
     $('#testimony-form').on('submit', onCreateSubmit);
-    $('#delete-testimony').on('click', onDeleteTestimony);
-    $('#edit-testimony').on('click', editTestimony);
+    $('body').on('click','#delete-testimony',onDeleteTestimony);
+    $('body').on('click','#edit-testimony',onEditTestimony);
+
     loggedinUser();
 
 }
@@ -22,8 +23,8 @@ function onReady() {
 function onLogoutBtnClick(event) {
     const confirmation = confirm('Are you sure you want to logout?');
     if (confirmation) {
-        window.open('/index.html', '_self');
         CACHE.deleteAuthenticatedUserFromCache();
+        window.open('/', '_self');
     }
 }
 
@@ -46,6 +47,7 @@ function onCreateSubmit(event) {
         newTestimony: newTestimony,
         onSuccess: testimony => {
             $('.notification').html(`Testimony submitted successfully`);
+            pastSubmittedTestimonies();
         },
         onError: err => {
             $('.notification').html(`ERROR: Testimony was not submitted successfully`);
@@ -67,7 +69,7 @@ function pastSubmittedTestimonies(event) {
                     $('.testimony-list').append(`
 
               <tr id="user-testimony" data-note-id="${data[i].id}">
-                  <td>${data[i].userTestimony}</td>
+                  <td class="edit-testimony">${data[i].userTestimony}</td>
                   <td>${data[i].userDisplayName}</td>
                   <td><a href id="edit-testimony"><img class="icon" src="/images/pencil.svg"></a></td> 
                   <td><a href id="delete-testimony"><img class="icon" src="/images/trash.svg"></a></td>
@@ -86,32 +88,35 @@ function pastSubmittedTestimonies(event) {
 }
 
 // EDIT TESTIMONY ==========================================
-function editTestimony(event) {
+function onEditTestimony(event) {
+    event.preventDefault();
     console.log('edit testimony')
-    // const testimonies = HTTP.getUserTestimonies(
-    //     {
-    //         authToken: STATE.authUser.authToken,
-    //         onSuccess: function (data) {
-    //             console.log('dashboard list');
-    //             console.log(data);
 
-    //             for (let i = 0; i < data.length; i++) {
-    //                 $('.testimony-list').append(`
+    const testimonyID = $(event.currentTarget)
+        .parent().parent()
+        .attr('data-note-id')
+        console.log(testimonyID)
+        $('#testimony-form').scrollIntoView();
 
-    //           <tr id="user-testimony" data-note-id="${data[i].id}">
-    //               <td>${data[i].userTestimony}</td>
-    //               <td>${data[i].userDisplayName}</td>
-    //               <td><a href=""><img class="icon" src="/images/pencil.svg"></a></td> 
-    //               <td><button id="delete-testimony"><img class="icon" src="/images/trash.svg"></button></td>
-    //           </tr>
-    //       `)
-    //             }
-    //         },
-    //         onError: function () {
-    //             console.log('error')
-    //         }
-    //     }
-    // );
+        const updateTestimony = {
+            userTestimony: $('#userTestimony').val(),
+            userDisplayName: $('#userDisplayName').val()
+        };
+    
+        console.log(updateTestimony);
+        HTTP.updateTestimony({
+            authToken: STATE.authUser.authToken,
+            updateTestimony: updateTestimony,
+            onSuccess: testimony => {
+                $('.notification').html(`Testimony submitted successfully`);
+                pastSubmittedTestimonies();
+            },
+            onError: err => {
+                $('.notification').html(`ERROR: Testimony was not submitted successfully`);
+            }
+        });
+    // $('#title-txt').prop('disabled', false).val(note.title);
+    // $('#content-txt').prop('disabled', false).val(note.content);
 }
 
 // DELETE TESTIMONY ==========================================
@@ -122,28 +127,31 @@ function onDeleteTestimony(event) {
    * #note-card element, we need to call event.stopImmediatePropagation to avoid both
    * event listeners firing when we click on the delete button inside #note-card.
    */
-  console.log(data[i].id);
+//   console.log(data[i].id);
 
     event.preventDefault();
 
     // event.stopImmediatePropagation();
     // Step 1: Get the note id to delete from it's parent.
-    // const testimonyID = $(event.currentTarget)
-    //     .closest('#user-testimony')
-    //     .attr('data-note-id');
+    const testimonyID = $(event.currentTarget)
+        .parent().parent()
+        .attr('data-note-id');
     // Step 2: Verify use is sure of deletion
     const userSaidYes = confirm('Are you sure you want to delete this note?');
     if (userSaidYes) {
         // Step 3: Make ajax call to delete note
         HTTP.deleteTestimony({
             testimonyID: testimonyID,
-            jwtToken: STATE.authUser.jwtToken,
-            onSuccess: () => {
+            authToken: STATE.authUser.authToken,
+            onSuccess: function () {
+                location.reload();
                 // Step 4: If succesful, reload the notes list
-                alert('Note deleted succesfully, reloading results ...');
-                HTTP.getUserTestimonies({
-                    jwtToken: STATE.authUser.jwtToken
-                });
+                // alert('Note deleted succesfully, reloading results ...');
+                // HTTP.getUserTestimonies({
+                //     authToken: STATE.authUser.authToken
+
+                // });
+
             }
         });
     }

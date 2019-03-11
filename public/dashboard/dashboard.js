@@ -47,7 +47,7 @@ function onCreateSubmit(event) {
         newTestimony: newTestimony,
         onSuccess: testimony => {
             $('.notification').html(`Testimony submitted successfully`);
-            pastSubmittedTestimonies();
+            // pastSubmittedTestimonies();
         },
         onError: err => {
             $('.notification').html(`ERROR: Testimony was not submitted successfully`);

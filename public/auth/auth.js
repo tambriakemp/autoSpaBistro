@@ -1,5 +1,4 @@
 // All these modules are are defined in /public/utilities
-const RENDER = window.RENDER_MODULE;
 const HTTP = window.HTTP_MODULE;
 const CACHE = window.CACHE_MODULE;
 
@@ -8,7 +7,6 @@ $(document).ready(onPageLoad);
 function onPageLoad() {
     $('#sign-up-form').submit(onSignUpSubmit);
     $('#login-form').submit(onLoginSubmit);
-    console.log('ready');
 }
 
 function onSignUpSubmit(event) {
@@ -17,18 +15,17 @@ function onSignUpSubmit(event) {
     const userData = {
         name: $('#name').val(),
         email: $('#email').val(),
-        username: $('#username').val(),
+        username: $('#username').val().toLowerCase(),
         password: $('#password').val()
     };
-    
+    console.log(userData);
     HTTP.signupUser({
         userData,
         onSuccess: user => {
-            alert(`User "${user.username}" created, you may now log in.`);
-            window.open('/login.html', '_self');
+            $('.notification').html(`Registration Successful. You may now login`);
         },
         onError: err => {
-            alert('There was a problem processing your request, please try again later.');
+            $('.notification').html(`There was a problem processing your request, please try again.`);
         }
     });
 }
@@ -37,7 +34,7 @@ function onLoginSubmit(event) {
     event.preventDefault();
 
     const userData = {
-        username: $('#username-login').val(),
+        username: $('#username-login').val().toLowerCase(),
         password: $('#password-login').val()
     };
 
@@ -48,8 +45,7 @@ function onLoginSubmit(event) {
             console.log(authenticatedUser);
             authenticatedUser.authToken = res.authToken;
             CACHE.saveAuthenticatedUserIntoCache(authenticatedUser);
-            alert('Login succesful, redirecting you to homepage ...');
-            window.open('/dashboard.html', '_self');
+            window.open('/dashboard/dashboard.html', '_self');
         },
         onError: err => {
             alert('Incorrect username or password. Please try again.');

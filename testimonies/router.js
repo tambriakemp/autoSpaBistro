@@ -6,9 +6,7 @@ const passport = require('passport');
 const router = express.Router();
 const jwtAuth = passport.authenticate('jwt', { session: false });
 
-router.get('public/dashboard.html', jwtAuth, (req, res) => {
- console.log('protected');
-});
+
 // GET ALL TESTIMONIES ========================================
 router.get('/', (req, res) => {
   console.log('testimony get');
@@ -38,7 +36,7 @@ router.get('/:id', jwtAuth, (req, res) => {
 
 // GET SPECIFIC USER TESTIMONIES =========================================
 
-router.get('/', jwtAuth, (req, res) => {
+router.get('/user', jwtAuth, (req, res) => {
   // Step 1: Attempt to retrieve all notes using Mongoose.Model.find()
   // https://mongoosejs.com/docs/api.html#model_Model.find
   Testimony.find({ user: req.user.id })
@@ -62,8 +60,8 @@ router.post("/", jwtAuth, (req, res) => {
   let testimony = Testimony();
 
   testimony.user = req.user.id,
-    testimony.userTestimony = req.body.userTestimony,
-    testimony.userDisplayName = req.body.userDisplayName
+  testimony.userTestimony = req.body.userTestimony,
+  testimony.userDisplayName = req.body.userDisplayName
 
   testimony.save((err) => {
     if (err) {

@@ -2,10 +2,9 @@ window.HTTP_MODULE = {
     signupUser,
     loginUser,
     getUserTestimonies,
-    // getNoteById,
-    createTestimony
-    // updateNote,
-    // deleteNote
+    getAllTestimonies,
+    createTestimony,
+    deleteTestimony
 };
 
 function signupUser(options) {
@@ -27,7 +26,6 @@ function signupUser(options) {
 }
 
 function loginUser(options) {
-    console.log('login the user')
     const { userData, onSuccess, onError } = options;
     $.ajax({
         type: 'POST',
@@ -71,12 +69,54 @@ function getUserTestimonies(options) {
     const { authToken, onSuccess, onError } = options;
     $.ajax({
         type: 'GET',
-        url: '/api/testimonies',
+        url: '/api/testimonies/user',
         contentType: 'application/json',
         dataType: 'json',
         data: undefined,
         beforeSend: function (xhr) {
             xhr.setRequestHeader('Authorization', `Bearer ${authToken}`);
+        },
+        success: onSuccess,
+        error: err => {
+            console.error(err);
+            if (onError) {
+                onError(err);
+            }
+        }
+    });
+    console.log(options);
+}
+
+function getAllTestimonies(options) {
+    // const { onSuccess, onError } = options;
+    const onSuccess = options.onSuccess;
+    const onError = options.onError;
+    $.ajax({
+        type: 'GET',
+        url: '/api/testimonies/',
+        contentType: 'application/json',
+        dataType: 'json',
+        data: undefined,
+        success: onSuccess,
+        error: err => {
+            console.error(err);
+            if (onError) {
+                onError(err);
+            }
+        }
+    });
+}
+
+function deleteTestimony(options) {
+    const { id, jwtToken, onSuccess, onError } = options;
+    $.ajax({
+        type: 'delete',
+        url: `/api/testimonies/${id}`,
+        contentType: 'application/json',
+        dataType: 'json',
+        data: undefined,
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader('Authorization', `Bearer ${jwtToken}`);
         },
         success: onSuccess,
         error: err => {

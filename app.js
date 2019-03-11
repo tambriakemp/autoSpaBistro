@@ -2,6 +2,7 @@
 
 require('dotenv').config();
 const express = require('express');
+const path = require('path');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const passport = require('passport');
@@ -30,18 +31,19 @@ app.use(function (req, res, next) { //CORS
 });
 app.use(bodyParser.urlencoded({ extended: true })); 
 app.use(express.json());
-app.use(morgan('common')); //Logging
-app.use('/api/users/', usersRouter);
-app.use('/api/testimonies/', testimonyRouter);
-app.use('/api/auth/', authRouter);
-app.use(express.static('public'));
+app.use(morgan('common')); 
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/api/testimonies', testimonyRouter);
+app.use('/api/users', usersRouter);
+app.use('/api/auth', authRouter);
 
 
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 
 
-//In case we make a HTTP request that is unhandled by our Express Server, we return a 404 status code and message
+//In case a HTTP request that is unhandled by our Express Server, return a 404 status code and message
 app.use('*', (req, res) => {
   return res.status(404).json({ message: 'Not Found' });
 });

@@ -14,7 +14,7 @@ const TestimonySchema = mongoose.Schema({
     type: String,
     required: true
   }
-});
+}); 
 
 TestimonySchema.methods.serialize = function() {
   let user;

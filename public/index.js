@@ -1,24 +1,50 @@
-// let INDEX_STATE = {};
-// const RENDER = window.RENDER_MODULE;
-// const HTTP = window.HTTP_MODULE;
-// const CACHE = window.CACHE_MODULE;
+'use strict'
 
-// $(document).ready(onPageLoad);
+const HTTP = window.HTTP_MODULE;
+
+$(document).ready(onPageLoad);
+
+function onPageLoad() {
+  loadTestimonyCarousel();
+}
+
+function loadTestimonyCarousel() {
+  const testimonies = HTTP.getAllTestimonies(
+    {
+      onSuccess: function (data) {
+        for (let i = 0; i < 6; i++) {
+          $('.testimony').append(`<div><p>${data[i].userTestimony}
+          </p>
+          <div class="testimony-author">- ${data[i].userDisplayName}</div>
+          </div>`)
+        }
+        
+        $('.owl-carousel').owlCarousel({
+          loop: true,
+          margin: 10,
+          nav: false,
+          autoplay: true,
+          responsive: {
+            0: {
+              items: 1
+            },
+            600: {
+              items: 1
+            },
+            1000: {
+              items: 1
+            }
+          }
+        })
 
 
-// function onPageLoad() {
-//     // updateAuthenticatedUI();
-//     console.log('this page loaded');
-//     if (STATE.authUser) {
-//         HTTP.getUserTestimonies({
-//             authToken: STATE.authUser.authToken,
-//             onSuccess: RENDER.renderTestimonyList
-//         });
-//     } 
-    
-//     // $('#logout-btn').on('click', onLogoutBtnClick);
-//     // $('#note-list').on('click', '#delete-note-btn', onDeleteNoteBtnClick);
-//     // $('#note-list').on('click', '#note-card', onNoteCardClick);
-// }
+      },
+      onError: function () {
+        console.log('error')
+      }
+    }
+  );
 
-  
+}
+
+

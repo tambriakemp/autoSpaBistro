@@ -10,8 +10,9 @@
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/main.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
         crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/assets/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700,800" rel="stylesheet">
-    <script src="index.js"></script>
 
 </head>
 
@@ -24,13 +25,13 @@
                         <img src="images/logo.png" alt="logo">
                     </div>
                 </a>
-                <nav>
-                    <ul class="">
+                <nav> 
+                    <ul>
                         <li>
                             <a href="./index.html">home</a>
                         </li>
                         <li>
-                            <a href="./login.html">login</a>
+                            <a href="/auth/login.html">login</a>
                         </li>
                     </ul>
                 </nav>
@@ -44,7 +45,7 @@
                     Exclusive Restaurant & Car Detailing Venue
                 </p>
                 <button class="action pop-in">
-                    <a href="./login.html">Member Login</a>
+                    <a href="/auth/login.html">Member Login</a>
                 </button>
             </div>
         </div>
@@ -87,7 +88,7 @@
             </div>
         </div>
     </section>
-    <section class="who">
+    <section>
         <div class="container">
             <div class="row">
                 <div class="col-xl-6 extra-padding">
@@ -118,7 +119,7 @@
             </div>
         </div>
     </section>
-    <section class="bistro">
+    <section class="grey-bg-content grey-bg">
         <div class="container">
             <p class="sub-title">
                 Checkout Our Bistro
@@ -177,7 +178,7 @@
             </div>
         </div>
     </section>
-    <section class="testimonies">
+    <section class="center-content">
         <div class="container">
             <div class="col-xl-12 col-12">
                 <p class="sub-title">
@@ -187,19 +188,14 @@
                     <span class="narrow-font">What </span>They Say About Us.
                 </h2>
             </div>
-            <div class="testimony">
-                <p>
-                    “This was our first time renting from Royal Cars and we were very pleased with the whole experience. Your price was lower
-                    than other companies. Our rental experience was good from start to finish, so we’ll be back in the future
-                    lorem ipsum diamet.”
-                </p>
-                <p class="testimony-author">
-                    - Robert Downey
-                </p>
+            <div class="testimony owl-carousel owl-theme">
+
             </div>
         </div>
     </section>
-    <section class="highlight">
+
+
+    <section class="dark-yellow-bg center-content highlights">
         <div class="container">
             <div class="row">
                 <div class="col-xl-3 col-3 ">
@@ -244,7 +240,7 @@
         </div>
 
     </section>
-    <section class="callout">
+    <section class="grey-bg center-content callout">
         <div class="container">
             <h2>
                 <span class="narrow-font">There’s no better feeling than driving a clean </span>car.
@@ -292,12 +288,8 @@
                 <div class="col-lg-4 spacing-left">
                     <h4>Our Info</h4>
                     <ul class="triangle">
-                        <li>
-                            <a href="#">Home</a>
-                        </li>
-                        <li>
-                            <a href="#">Login</a>
-                        </li>
+                        <li>348 14th St NW, </br>Atlanta, GA 30309</li>
+                        <li>contact@autospabistro.com</li>
                     </ul>
                 </div>
 
@@ -326,6 +318,10 @@
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
+    <script src="/assets/OwlCarousel2-2.3.4/docs/assets/vendors/jquery.min.js"></script>
+    <script src="/assets/OwlCarousel2-2.3.4/dist/owl.carousel.js"></script>
+    <script src="utilities/http.js"></script>
+    <script src="index.js"></script>
 </body>
 
 </html>

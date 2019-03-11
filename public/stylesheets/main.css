@@ -143,10 +143,6 @@ input[type=submit] {
     width: 100%;
 }
 
-.yellow-bg {
-    background-color: #f8f4da;
-}
-
 .center-content {
     text-align: center;
 }
@@ -267,7 +263,7 @@ input[type=submit] {
     color: #ffffff;
 }
 
-/* WHO WE ARE =============================================== */
+/* ABOUT US  =============================================== */
 
 .orange-line {
     border-bottom: 2px solid #ffcf00;
@@ -286,31 +282,17 @@ input[type=submit] {
     margin: 110px 0 0 50px;
 }
 
-/* BISTRO ===================================================== */
-
-.bistro {
+/* GREY BACKGROUND SECTION ===================================== */
+.grey-bg {
     background-color: #3d3d3d;
-}
-
-.bistro h3 {
-    color: #ffcf00;
-}
-
-.bistro p,
-h6 {
     color: #ffffff;
 }
 
-.bistro-image {
-    width: 100px;
-    height: auto;
-    float: left;
-    margin-right: 10px;
+.grey-bg-content h3 {
+    color: #ffcf00;
 }
 
-.menus {
-    margin-top: 40px;
-}
+/* MAP ============================================== */
 
 .map {
     margin: -10px 0;
@@ -325,10 +307,6 @@ h6 {
 }
 
 /* TESTIMONIES ================================================ */
-
-.testimonies {
-    text-align: center;
-}
 
 .testimony {
     width: 70%;
@@ -348,24 +326,18 @@ h6 {
 
 /* HIGHLIGHT ================================================= */
 
-.highlight {
+.highlights {
     display: none;
 }
 
 /* CALLOUT ================================================== */
 
 .callout {
-    background-color: #3d3d3d;
-    text-align: center;
     padding: 100px 0;
 }
 
 .callout h2 {
     color: #ffcf00;
-}
-
-.callout p {
-    color: #ffffff;
 }
 
 /* PAGE TITLE ============================================== */
@@ -475,6 +447,37 @@ textarea {
     text-transform: none;
 }
 
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    color: white;
+    font-weight: 100;
+  }
+  th {
+      font-weight: 600;
+  }
+  
+  tr:hover {background-color:#f5f5f5;}
+  .icon {
+      width: 24px;
+      height: auto;
+  }
+
+  #user-testimony button,  input[type="reset"] {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
 /* FOOTER ================================================== */
 
 footer h4 {
@@ -538,17 +541,23 @@ footer h4 {
             transform: none;
         }
     }
-    /* HIGHLIGHT ============================================= */
-    .highlight {
+    /* YELLOW BACKGROUND SECTION ============================== */
+    .yellow-bg {
+        background-color: #f8f4da;
+    }
+        .dark-yellow-bg{
         background-color: #ffcf00;
         color: #ffffff;
-        text-align: center;
+    }
+    /* HIGHLIGHT ============================================= */
+
+    .highlights {
         display: inherit;
     }
-    .highlight h3 {
+    .highlights h3 {
         color: #ffffff;
     }
-    .highlight i {
+    .highlights i {
         color: #ffffff;
         margin: 35px 0 0 0;
     }
@@ -587,20 +596,7 @@ footer h4 {
         height: auto;
         width: 350px;
     }
-    /* HIGHLIGHT ============================================= */
-    .highlight {
-        background-color: #ffcf00;
-        color: #ffffff;
-        text-align: unset;
-    }
-    .highlight h3 {
-        color: #ffffff;
-    }
-    .highlight i {
-        color: #ffffff;
-        float: left;
-        margin: 0 10px;
-    }
+
     /* LOGIN-REGISTRATION ==================================== */
     .login-reg-sec {
         background-color: #f8f4da;

@@ -17,6 +17,7 @@
     "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.4.13",
     "morgan": "^1.9.1",
+    "owl.carousel": "^2.3.4",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0"

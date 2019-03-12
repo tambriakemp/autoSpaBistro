@@ -10,11 +10,11 @@ function onReady() {
     STATE.authUser = CACHE.getAuthenticatedUserFromCache();
     pastSubmittedTestimonies();
 
-    $('body').on('click','#logout-btn', onLogoutBtnClick);
+    $('body').on('click', '#logout-btn', onLogoutBtnClick);
     $('#testimony-form').on('submit', onCreateSubmit);
-    $('body').on('click','#delete-testimony',onDeleteTestimony);
-    $('body').on('click','#edit-testimony',onEditTestimony);
-
+    $('body').on('click', '#delete-testimony', onDeleteTestimony);
+    $('body').on('click', '#edit-testimony', onEditTestimony);
+    $('body').on('submit', '#testimony-edit-form', onSubmitEditTestimony);
     loggedinUser();
 
 }
@@ -47,7 +47,6 @@ function onCreateSubmit(event) {
         newTestimony: newTestimony,
         onSuccess: testimony => {
             $('.notification').html(`Testimony submitted successfully`);
-            // pastSubmittedTestimonies();
         },
         onError: err => {
             $('.notification').html(`ERROR: Testimony was not submitted successfully`);
@@ -69,15 +68,12 @@ function pastSubmittedTestimonies(event) {
                     $('.testimony-list').append(`
 
               <tr id="user-testimony" data-note-id="${data[i].id}">
-                  <td class="edit-testimony">${data[i].userTestimony}</td>
-                  <td>${data[i].userDisplayName}</td>
+                  <td class="user-edit-testimony">${data[i].userTestimony}</td>
+                  <td class="user-display-name">${data[i].userDisplayName}</td>
                   <td><a href id="edit-testimony"><img class="icon" src="/images/pencil.svg"></a></td> 
                   <td><a href id="delete-testimony"><img class="icon" src="/images/trash.svg"></a></td>
               </tr>
           `)
-                    // document.getElementById('delete-testimony').addEventListener('click', (event) => {
-                    //     onDeleteTestimony(data[i].id);
-                    // });
                 }
             },
             onError: function () {
@@ -95,28 +91,56 @@ function onEditTestimony(event) {
     const testimonyID = $(event.currentTarget)
         .parent().parent()
         .attr('data-note-id')
-        console.log(testimonyID)
-        $('#testimony-form').scrollIntoView();
 
-        const updateTestimony = {
-            userTestimony: $('#userTestimony').val(),
-            userDisplayName: $('#userDisplayName').val()
-        };
-    
-        console.log(updateTestimony);
-        HTTP.updateTestimony({
-            authToken: STATE.authUser.authToken,
-            updateTestimony: updateTestimony,
-            onSuccess: testimony => {
-                $('.notification').html(`Testimony submitted successfully`);
-                pastSubmittedTestimonies();
-            },
-            onError: err => {
-                $('.notification').html(`ERROR: Testimony was not submitted successfully`);
-            }
-        });
-    // $('#title-txt').prop('disabled', false).val(note.title);
-    // $('#content-txt').prop('disabled', false).val(note.content);
+    const userEditTestimony = $(event.currentTarget)
+        .parent().parent()
+        .children('.user-edit-testimony').text()
+
+    const userDisplayName = $(event.currentTarget)
+        .parent().parent().children('.user-display-name').text()
+
+
+    console.log(testimonyID, userEditTestimony, userDisplayName)
+    //scroll to top table
+    $('.user-testimony-forms').html(`
+            <form id="testimony-edit-form" data-note-id="${testimonyID}">
+            <textarea name="userTestimony" id="userTestimony">${userEditTestimony}</textarea>
+            <input type="text" id="userDisplayName" name="userDisplayName" value="${userDisplayName}" placeholder="Choose Display Name">
+            <input type="submit" value="Edit Testimony">
+            </form>`)
+
+}
+
+// SUBMIT EDIT TESTIMONY ==========================================
+function onSubmitEditTestimony(event) {
+    event.preventDefault();
+    console.log('on submit edit testimony')
+
+    const updateTestimony = {
+        userTestimony: $('#userTestimony').val(),
+        userDisplayName: $('#userDisplayName').val(),
+        testimonyID: $(event.target).attr('data-note-id')
+    };
+    console.log(userTestimony, userDisplayName)
+
+    HTTP.updateTestimony({
+        testimonyID: updateTestimony.testimonyID,
+        authToken: STATE.authUser.authToken,
+        updateTestimony: updateTestimony,
+        onSuccess: testimony => {
+            $('.notification').html(`Testimony submitted successfully`);
+        },
+        onError: err => {
+            $('.notification').html(`ERROR: Testimony was not submitted successfully`);
+        }
+    });
+
+    $('.user-testimony-forms').html(`
+    <form id="testimony-form">
+    <textarea name="userTestimony" id="userTestimony"></textarea>
+    <input type="userDisplayName" id="userDisplayName" name="userDisplayName" placeholder="Choose Display Name">
+    <input type="submit">
+    </form>`)
 }
 
 // DELETE TESTIMONY ==========================================
@@ -127,7 +151,7 @@ function onDeleteTestimony(event) {
    * #note-card element, we need to call event.stopImmediatePropagation to avoid both
    * event listeners firing when we click on the delete button inside #note-card.
    */
-//   console.log(data[i].id);
+    //   console.log(data[i].id);
 
     event.preventDefault();
 

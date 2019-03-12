@@ -5,7 +5,8 @@ window.HTTP_MODULE = {
     getAllTestimonies,
     createTestimony,
     deleteTestimony,
-    updateTestimony
+    updateTestimony,
+    getTestimonyByID
 };
 
 function signupUser(options) {
@@ -131,7 +132,6 @@ function deleteTestimony(options) {
 
 function updateTestimony(options) {
     const {authToken, testimonyID, updateTestimony, onSuccess, onError } = options;
-
     $.ajax({
         type: 'PUT',
         url: `/api/testimonies/${testimonyID}`,
@@ -149,4 +149,11 @@ function updateTestimony(options) {
             }
         }
     });
+
+}
+
+function getTestimonyByID(options) {
+    const { testimonyID, onSuccess } = options;
+    $.getJSON(`/api/testimonies/${testimonyID}`, onSuccess);
+    console.log('i got the tesimony by id')
 }

@@ -133,7 +133,7 @@ function deleteTestimony(options) {
 function updateTestimony(options) {
     const {authToken, testimonyID, updateTestimony, onSuccess, onError } = options;
     $.ajax({
-        type: 'PUT',
+        type: 'PUT', 
         url: `/api/testimonies/${testimonyID}`,
         contentType: 'application/json',
         dataType: 'json',

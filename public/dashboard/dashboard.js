@@ -89,12 +89,10 @@ function onEditTestimony(event) {
     console.log('edit testimony')
 
     const testimonyID = $(event.currentTarget)
-        .parent().parent()
-        .attr('data-note-id')
+        .parent().parent().attr('data-note-id')
 
     const userEditTestimony = $(event.currentTarget)
-        .parent().parent()
-        .children('.user-edit-testimony').text()
+        .parent().parent().children('.user-edit-testimony').text()
 
     const userDisplayName = $(event.currentTarget)
         .parent().parent().children('.user-display-name').text()
@@ -114,14 +112,13 @@ function onEditTestimony(event) {
 // SUBMIT EDIT TESTIMONY ==========================================
 function onSubmitEditTestimony(event) {
     event.preventDefault();
-    console.log('on submit edit testimony')
+    console.log('on submit edit testimony');
 
     const updateTestimony = {
         userTestimony: $('#userTestimony').val(),
         userDisplayName: $('#userDisplayName').val(),
         testimonyID: $(event.target).attr('data-note-id')
     };
-    console.log(userTestimony, userDisplayName)
 
     HTTP.updateTestimony({
         testimonyID: updateTestimony.testimonyID,

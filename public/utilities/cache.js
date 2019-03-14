@@ -4,6 +4,7 @@ window.CACHE_MODULE = {
     deleteAuthenticatedUserFromCache
 };
 
+// AUTHENTICATE USER =============================================//
 function getAuthenticatedUserFromCache() {
     const authToken = localStorage.getItem('authToken');
     const id = localStorage.getItem('id');
@@ -24,6 +25,7 @@ function getAuthenticatedUserFromCache() {
     }
 }
 
+// SAVE USER IN CACHE =============================================//
 function saveAuthenticatedUserIntoCache(user) {
     localStorage.setItem('authToken', user.authToken);
     localStorage.setItem('id', user.id);
@@ -32,6 +34,7 @@ function saveAuthenticatedUserIntoCache(user) {
     localStorage.setItem('email', user.email);
 }
 
+// DELETE USER FROM CACHE =============================================//
 function deleteAuthenticatedUserFromCache() {
     localStorage.removeItem('authToken');
     localStorage.removeItem('id');

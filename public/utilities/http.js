@@ -9,6 +9,7 @@ window.HTTP_MODULE = {
     getTestimonyByID
 };
 
+// REGISTER USER =============================================//
 function signupUser(options) {
     const { userData, onSuccess, onError } = options;
     $.ajax({
@@ -27,6 +28,7 @@ function signupUser(options) {
     });
 }
 
+// LOGIN USER =============================================//
 function loginUser(options) {
     const { userData, onSuccess, onError } = options;
     $.ajax({
@@ -45,6 +47,7 @@ function loginUser(options) {
     });
 }
 
+// POST TESTIMONY =============================================//
 function createTestimony(options) {
     const { authToken, newTestimony, onSuccess, onError } = options;
     $.ajax({
@@ -66,6 +69,7 @@ function createTestimony(options) {
     });
 }
 
+// GET TESTIMONIES FOR SINGLE USER =====================================//
 function getUserTestimonies(options) {
     const { authToken, onSuccess, onError } = options;
     $.ajax({
@@ -87,8 +91,8 @@ function getUserTestimonies(options) {
     });
 }
 
+// GET ALL TESTIMONIES =========================================//
 function getAllTestimonies(options) {
-    // const { onSuccess, onError } = options;
     const onSuccess = options.onSuccess;
     const onError = options.onError;
     $.ajax({
@@ -107,6 +111,7 @@ function getAllTestimonies(options) {
     });
 }
 
+// DELETE TESTIMONY =============================================//
 function deleteTestimony(options) {
     const { testimonyID, authToken, onSuccess, onError } = options;
     $.ajax({
@@ -128,6 +133,7 @@ function deleteTestimony(options) {
     });
 }
 
+// PUT TESTIMONY =============================================//
 function updateTestimony(options) {
     const { authToken, testimonyID, updateTestimony, onSuccess, onError } = options;
     $.ajax({
@@ -147,9 +153,9 @@ function updateTestimony(options) {
             }
         }
     });
-
 }
 
+// GET SINGLE TESTIMONY =========================================//
 function getTestimonyByID(options) {
     const { testimonyID, onSuccess } = options;
     $.getJSON(`/api/testimonies/${testimonyID}`, onSuccess);

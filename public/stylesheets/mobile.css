@@ -3,9 +3,7 @@ html, body {
     height: 100%;
     margin: 0;
 }
-
 .nav {
-    /* border-bottom: 1px solid #EAEAEB; */
     text-align: right;
     height: 70px;
     line-height: 70px;
@@ -17,7 +15,6 @@ z-index: 100;
 .menu a {
     clear: right;
     text-decoration: none;
-    /* color: white; */
     margin: 0 10px;
     line-height: 70px;
     text-transform: capitalize;
@@ -25,11 +22,6 @@ z-index: 100;
 .white-menu a{
     color: white;
 }
-
-/* span {
-    color: #ffcf00;
-} */
-
 label {
     margin: 0 10px 0 0;
     font-size: 26px;

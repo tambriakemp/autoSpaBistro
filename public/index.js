@@ -9,19 +9,21 @@ $(document).ready(onPageLoad);
 function onPageLoad() {
   updateAuthenticatedUI();
   loadTestimonyCarousel();
+  $('body').on('click', '#logout-btn', onLogoutBtnClick);
 }
 
+// TESTIMONIAL SLIDER =============================================//
 function loadTestimonyCarousel() {
   const testimonies = HTTP.getAllTestimonies(
     {
       onSuccess: function (data) {
-        for (let i= (data.length-1); i >= (data.length-6); i--) {
+        for (let i = (data.length - 1); i >= (data.length - 6); i--) {
           $('.testimony').append(`<div><p>${data[i].userTestimony}
           </p>
           <div class="testimony-author">- ${data[i].userDisplayName}</div>
           </div>`)
         }
-        
+
         $('.owl-carousel').owlCarousel({
           loop: true,
           margin: 10,
@@ -39,24 +41,21 @@ function loadTestimonyCarousel() {
             }
           }
         })
-
-
       },
       onError: function () {
         console.log('error')
       }
     }
   );
-
 }
 
+// AUTHENTIC USER MENU =============================================//
 function updateAuthenticatedUI() {
   const authUser = CACHE.getAuthenticatedUserFromCache();
   if (authUser) {
-      STATE.authUser = authUser;
-      // $('#nav-greeting').html(`Welcome, ${authUser.name}`);
-      $('.auth-menu').removeAttr('hidden');
+    STATE.authUser = authUser;
+    $('.auth-menu').removeAttr('hidden');
   } else {
-      $('.default-menu').removeAttr('hidden');
+    $('.default-menu').removeAttr('hidden');
   }
 }

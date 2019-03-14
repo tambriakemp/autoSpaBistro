@@ -1,5 +1,4 @@
 * {
-    /* margin: 0; */
     padding: 0;
     box-sizing: border-box;
 }
@@ -333,8 +332,9 @@ input[type=submit] {
     font-weight: 500;
     margin: 40px 0;
 }
-.overflow{
-    overflow-x:auto;
+
+.overflow {
+    overflow-x: auto;
 }
 
 /* HIGHLIGHT ================================================= */
@@ -532,6 +532,7 @@ footer h4 {
     section {
         padding: 80px;
     }
+    
     /* HEADER ============================================= */
     .hero .hero-header nav li a {
         color: #ffffff;

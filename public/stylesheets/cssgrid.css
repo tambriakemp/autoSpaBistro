@@ -2,11 +2,6 @@
     width: device-width;
 }
 
-html {
-    box-sizing: border-box;
-    -ms-overflow-style: scrollbar;
-}
-
 .col-1,
 .col-2,
 .col-3,

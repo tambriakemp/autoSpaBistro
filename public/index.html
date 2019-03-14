@@ -9,8 +9,8 @@
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/cssgrid.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/mobile.css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/assets/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700,800" rel="stylesheet">
@@ -26,12 +26,20 @@
                         <img src="images/logo.png" alt="logo">
                     </div>
                 </a>
-                <div class="nav">
+                <div class="nav  auth-menu" hidden>
+                    <label for="toggle-auth">&#9776;</label>
+                    <input type="checkbox" id="toggle-auth" />
+                    <div class="menu white-menu" >
+                        <a href="/index.html">home</a>
+                        <a href="/dashboard/dashboard.html">Dashboard</a>
+                        <a href="/auth/login.html" id="logout">logout</a>
+                    </div>
+                </div>
+                <div class="nav default-menu"  hidden >
                     <label for="toggle">&#9776;</label>
-                    <input type="checkbox" id="toggle"/>
-                    <div class="menu" hidden>
-                        <a href="./index.html">home</a>
-                        <a href="./dashboard/dashboard.html" hidden>Dashboard</a>
+                    <input type="checkbox" id="toggle" />
+                    <div class="menu white-menu" >
+                        <a href="/index.html">home</a>
                         <a href="/auth/login.html">login</a>
                     </div>
                 </div>
@@ -112,12 +120,16 @@
                         <span class="narrow-font">Auto </span>Spa Bistro</h2>
                     <div class="orange-line"></div>
                     <p>
-                        Auto Spa Bistro is Atlanta's exclusive car detailing venue serving up more than just washes, waxes and buffs!
+                        Auto Spa Bistro is Atlanta's exclusive car detailing venue serving up more than just washes,
+                        waxes and buffs!
                     </p>
                     <p>
-                        Check out our full service bar with speciality drinks and lounge surrounded with flat screen TVs. Grab a bite wile you're
-                        here. We serve breakfast, lunch and dinner! If you're in need of a little pampering in addition to
-                        your car, ask us about our membership privilages including our VIP room for a more plush, relaxing
+                        Check out our full service bar with speciality drinks and lounge surrounded with flat screen
+                        TVs. Grab a bite wile you're
+                        here. We serve breakfast, lunch and dinner! If you're in need of a little pampering in addition
+                        to
+                        your car, ask us about our membership privilages including our VIP room for a more plush,
+                        relaxing
                         atmosphere.
                     </p>
                     <img src="./images/signature.png" id="signature" alt="signature">
@@ -140,7 +152,8 @@
         </div>
     </section>
     <div class="map ">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3316.0245427957198!2d-84.40050488479193!3d33.78586438067932!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f504f5cf11db5b%3A0x6a556a72cf1e8833!2s348+14th+St+NW%2C+Atlanta%2C+GA+30318!5e0!3m2!1sen!2sus!4v1550379723616"
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3316.0245427957198!2d-84.40050488479193!3d33.78586438067932!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f504f5cf11db5b%3A0x6a556a72cf1e8833!2s348+14th+St+NW%2C+Atlanta%2C+GA+30318!5e0!3m2!1sen!2sus!4v1550379723616"
             width="100%" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
     </div>
     <section class="yellow-bg center-content">
@@ -263,7 +276,8 @@
                 <div class="col-lg-4 space-below">
                     <img src="images/logofooter.png" alt="logo">
                     <p>
-                        Book private event today! Catering & Office Parties. Join us every Thursday for Interstate poker night at 5pm until closing.
+                        Book private event today! Catering & Office Parties. Join us every Thursday for Interstate poker
+                        night at 5pm until closing.
                     </p>
                     <h3 class="footer-phone">
                         678.974.8187
@@ -326,11 +340,12 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="/assets/OwlCarousel2-2.3.4/docs/assets/vendors/jquery.min.js"></script>
     <script src="/assets/OwlCarousel2-2.3.4/dist/owl.carousel.js"></script>
     <script src="utilities/http.js"></script>
+    <script src="utilities/cache.js"></script>
     <script src="index.js"></script>
 </body>
 

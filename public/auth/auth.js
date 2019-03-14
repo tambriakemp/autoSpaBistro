@@ -1,24 +1,24 @@
 // All these modules are are defined in /public/utilities
+let STATE = {};
 const HTTP = window.HTTP_MODULE;
 const CACHE = window.CACHE_MODULE;
 
 $(document).ready(onPageLoad);
 
 function onPageLoad() {
+    updateAuthenticatedUI();
     $('#sign-up-form').submit(onSignUpSubmit);
     $('#login-form').submit(onLoginSubmit);
 }
 
 function onSignUpSubmit(event) {
     event.preventDefault();
-
     const userData = {
         name: $('#name').val(),
         email: $('#email').val(),
         username: $('#username').val().toLowerCase(),
         password: $('#password').val()
     };
-    console.log(userData);
     HTTP.signupUser({
         userData,
         onSuccess: user => {
@@ -37,12 +37,10 @@ function onLoginSubmit(event) {
         username: $('#username-login').val().toLowerCase(),
         password: $('#password-login').val()
     };
-
     HTTP.loginUser({
         userData,
         onSuccess: res => {
             const authenticatedUser = res.user;
-            console.log(authenticatedUser);
             authenticatedUser.authToken = res.authToken;
             CACHE.saveAuthenticatedUserIntoCache(authenticatedUser);
             window.open('/dashboard/dashboard.html', '_self');
@@ -51,7 +49,15 @@ function onLoginSubmit(event) {
             alert('Incorrect username or password. Please try again.');
         }
     });
+}
 
-    console.log(userData); 
-
+function updateAuthenticatedUI() {
+    const authUser = CACHE.getAuthenticatedUserFromCache();
+    if (authUser) {
+        STATE.authUser = authUser;
+        // $('#nav-greeting').html(`Welcome, ${authUser.name}`);
+        $('.auth-menu').removeAttr('hidden');
+    } else {
+        $('.default-menu').removeAttr('hidden');
+    }
 }

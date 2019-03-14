@@ -17,17 +17,21 @@ z-index: 100;
 .menu a {
     clear: right;
     text-decoration: none;
-    color: gray;
+    /* color: white; */
     margin: 0 10px;
     line-height: 70px;
+    text-transform: capitalize;
+}
+.white-menu a{
+    color: white;
 }
 
-span {
+/* span {
     color: #ffcf00;
-}
+} */
 
 label {
-    margin: 0 40px 0 0;
+    margin: 0 10px 0 0;
     font-size: 26px;
     line-height: 70px;
     display: none;
@@ -37,7 +41,9 @@ label {
 #toggle {
     display: none;
 }
-
+#toggle-auth {
+    display: none;
+}
 
 @media only screen and (max-width: 500px) {
     label {
@@ -53,12 +59,19 @@ label {
         display: block;
         border-bottom: 1px solid #EAEAEB;
         margin: 0;
-     
+        text-transform: capitalize;
+        color: black;
     }
     #toggle:checked + .menu {
         display: block;
+        background-color: white;
+        padding: 10px;
     }
-    
+    #toggle-auth:checked + .menu {
+        display: block;
+        background-color: white;
+        padding: 10px;
+    }
     
 }
 

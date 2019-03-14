@@ -1,19 +1,14 @@
 'use strict';
 
 const express = require('express');
-const {User} = require('./models'); 
+const { User } = require('./models');
 const router = express.Router();
 
 
 // POST TO CREATE USER ===================================
 router.post('/', (req, res) => {
-
-  console.log(req.body);
-
-  const requiredFields = ['username', 'name', 'password','email'];
+  const requiredFields = ['username', 'name', 'password', 'email'];
   const missingField = requiredFields.find(field => !(field in req.body));
-
-
   if (missingField) {
     return res.status(422).json({
       code: 422,
@@ -27,7 +22,6 @@ router.post('/', (req, res) => {
   const nonStringField = stringFields.find(
     field => field in req.body && typeof req.body[field] !== 'string'
   );
-
   if (nonStringField) {
     return res.status(422).json({
       code: 422,
@@ -63,12 +57,12 @@ router.post('/', (req, res) => {
   const tooSmallField = Object.keys(sizedFields).find(
     field =>
       'min' in sizedFields[field] &&
-            req.body[field].trim().length < sizedFields[field].min
+      req.body[field].trim().length < sizedFields[field].min
   );
   const tooLargeField = Object.keys(sizedFields).find(
     field =>
       'max' in sizedFields[field] &&
-            req.body[field].trim().length > sizedFields[field].max
+      req.body[field].trim().length > sizedFields[field].max
   );
 
   if (tooSmallField || tooLargeField) {
@@ -84,12 +78,12 @@ router.post('/', (req, res) => {
     });
   }
 
-  let {username, password, name = '', email} = req.body;
+  let { username, password, name = '', email } = req.body;
 
   name = name.trim();
   email = email.trim();
 
-  return User.find({username})
+  return User.find({ username })
     .count()
     .then(count => {
       if (count > 0) {
@@ -117,25 +111,25 @@ router.post('/', (req, res) => {
       if (err.reason === 'ValidationError') {
         return res.status(err.code).json(err);
       }
-      res.status(500).json({code: 500, message: 'Internal server error'});
+      res.status(500).json({ code: 500, message: 'Internal server error' });
     });
 });
 
 // GET ALL USERS =========================================
 router.get('/', (req, res) => {
-  
+
   return User.find()
     .then(users => res.json(users.map(user => user.serialize())))
-    .catch(err => res.status(500).json({message: 'Internal server error'}));
+    .catch(err => res.status(500).json({ message: 'Internal server error' }));
 });
 
 // GET ONE USER ==========================================
 router.get('/:id', (req, res) => {
 
   return User.findById(req.params.id)
-      .then(user => res.json(user.serialize()))
-      .catch(err => res.status(500).json({message: 'Internal server error'}));
-      
+    .then(user => res.json(user.serialize()))
+    .catch(err => res.status(500).json({ message: 'Internal server error' }));
+
 });
 
 

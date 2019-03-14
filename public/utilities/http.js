@@ -47,7 +47,6 @@ function loginUser(options) {
 
 function createTestimony(options) {
     const { authToken, newTestimony, onSuccess, onError } = options;
-console.log('posting this',authToken);
     $.ajax({
         type: 'POST',
         url: '/api/testimonies',
@@ -86,7 +85,6 @@ function getUserTestimonies(options) {
             }
         }
     });
-    console.log(options);
 }
 
 function getAllTestimonies(options) {
@@ -131,9 +129,9 @@ function deleteTestimony(options) {
 }
 
 function updateTestimony(options) {
-    const {authToken, testimonyID, updateTestimony, onSuccess, onError } = options;
+    const { authToken, testimonyID, updateTestimony, onSuccess, onError } = options;
     $.ajax({
-        type: 'PUT', 
+        type: 'PUT',
         url: `/api/testimonies/${testimonyID}`,
         contentType: 'application/json',
         dataType: 'json',
@@ -145,7 +143,7 @@ function updateTestimony(options) {
         error: err => {
             console.error(err);
             if (onError) {
-                onError();
+                onError(err);
             }
         }
     });
@@ -155,5 +153,4 @@ function updateTestimony(options) {
 function getTestimonyByID(options) {
     const { testimonyID, onSuccess } = options;
     $.getJSON(`/api/testimonies/${testimonyID}`, onSuccess);
-    console.log('i got the tesimony by id')
 }

@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/cssgrid.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/mobile.css" />
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700,800" rel="stylesheet">
 </head>
 
@@ -15,21 +16,28 @@
     <div class="pages-topbar">
         <div class="container">
             <div class="pages-nav">
-                <a href="./index.html">
+                <a href="/index.html">
                     <div class="logo">
                         <img src="/images/logotopbar.png" alt="logo">
                     </div>
                 </a>
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="/index.html">Home</a>
-                        </li>
-                        <li>
-                            <a href="/index.html" id="logout-btn">Logout</a>
-                        </li>
-                    </ul>
-                </nav>
+                <div class="nav  auth-menu" hidden>
+                    <label for="toggle-auth">&#9776;</label>
+                    <input type="checkbox" id="toggle-auth" />
+                    <div class="menu">
+                        <a href="/index.html">home</a>
+                        <a href="/dashboard/dashboard.html">Dashboard</a>
+                        <a href="/auth/login.html" id="logout">logout</a>
+                    </div>
+                </div>
+                <div class="nav default-menu" hidden>
+                    <label for="toggle">&#9776;</label>
+                    <input type="checkbox" id="toggle" />
+                    <div class="menu">
+                        <a href="/index.html">home</a>
+                        <a href="/auth/login.html">login</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -55,14 +63,16 @@
                         <span class="narrow-font">Testimony</span>
                     </h3>
                     <p>
-                        If you liked the service you received, submit a testimony that will be displayed on our website! Thank you for your business.
+                        If you liked the service you received, submit a testimony that will be displayed on our website!
+                        Thank you for your business.
                     </p>
                     <div class="user-testimony-forms">
-                    <form id="testimony-form">
-                        <textarea name="userTestimony" id="userTestimony" placeholder="Enter Testimony"></textarea>
-                        <input type="userDisplayName" id="userDisplayName" name="userDisplayName" placeholder="Choose Display Name">
-                        <input type="submit">
-                    </form>
+                        <form id="testimony-form">
+                            <textarea name="userTestimony" id="userTestimony" placeholder="Enter Testimony"></textarea>
+                            <input type="userDisplayName" id="userDisplayName" name="userDisplayName"
+                                placeholder="Choose Display Name">
+                            <input type="submit">
+                        </form>
                     </div>
                     <div class="notification"></div>
                 </div>
@@ -71,21 +81,25 @@
     </section>
     <section class="grey-bg keep-in-touch-sec">
         <div class="row">
-            <div class="col-xl-7">
+            <div class="col-sm-7">
                 <p>
                     Testimonies you submitted
                 </p>
                 <h3>
-                    <span class="narrow-font">Past Submitted</span> Testimonies</h3>
+                    <span class="narrow-font">Past Submitted</span> Testimonies
+                    <a class="refresh"><img src="/images/refresh.svg" alt="refresh button"></a>
+                </h3>
                 <div>
-                    <table style="width:100%" class="testimony-list">
-                        <tr>
-                            <th>Testimony</th>
-                            <th>Display Name</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
-                        </tr>
-                    </table>
+                    <div class="overflow">
+                        <table class="testimony-list col-sm-1">
+                            <tr>
+                                <th>Testimony</th>
+                                <th>Display Name</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -96,7 +110,8 @@
                 <div class="col-lg-4 space-below">
                     <img src="/images/logofooter.png" alt="logo">
                     <p>
-                        Book private event today! Catering & Office Parties. Join us every Thursday for Interstate poker night at 5pm until closing.
+                        Book private event today! Catering & Office Parties. Join us every Thursday for Interstate poker
+                        night at 5pm until closing.
                     </p>
                     <h3 class="footer-phone">
                         678.974.8187
@@ -131,9 +146,9 @@
                 <div class="col-lg-4 spacing-left">
                     <h4>Our Info</h4>
                     <ul class="triangle">
-                            <li>348 14th St NW, </br>Atlanta, GA 30309</li>
-                            <li>contact@autospabistro.com</li>
-                        </ul>
+                        <li>348 14th St NW, </br>Atlanta, GA 30309</li>
+                        <li>contact@autospabistro.com</li>
+                    </ul>
                 </div>
 
             </div>
@@ -159,8 +174,8 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="/utilities/cache.js"></script>
     <script src="/utilities/http.js"></script>
     <script src="dashboard.js"></script>

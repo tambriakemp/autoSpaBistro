@@ -6,15 +6,17 @@ const CACHE = window.CACHE_MODULE;
 $(document).ready(onReady);
 
 function onReady() {
+    updateAuthenticatedUI();
 
     STATE.authUser = CACHE.getAuthenticatedUserFromCache();
     pastSubmittedTestimonies();
-
     $('body').on('click', '#logout-btn', onLogoutBtnClick);
     $('#testimony-form').on('submit', onCreateSubmit);
     $('body').on('click', '#delete-testimony', onDeleteTestimony);
     $('body').on('click', '#edit-testimony', onEditTestimony);
     $('body').on('submit', '#testimony-edit-form', onSubmitEditTestimony);
+    $('body').on('click', '.refresh', pastSubmittedTestimonies);
+
     loggedinUser();
 
 }
@@ -40,8 +42,6 @@ function onCreateSubmit(event) {
         userTestimony: $('#userTestimony').val(),
         userDisplayName: $('#userDisplayName').val()
     };
-
-    console.log(newTestimony);
     HTTP.createTestimony({
         authToken: STATE.authUser.authToken,
         newTestimony: newTestimony,
@@ -52,7 +52,6 @@ function onCreateSubmit(event) {
             $('.notification').html(`ERROR: Testimony was not submitted successfully`);
         }
     });
-    console.log('creating testimony')
 }
 
 // PAST SUBMITTED TESTIMONIES ==========================================
@@ -61,13 +60,10 @@ function pastSubmittedTestimonies(event) {
         {
             authToken: STATE.authUser.authToken,
             onSuccess: function (data) {
-                console.log('dashboard list');
-                console.log(data);
-
+                $('.testimony-list').html('');
                 for (let i = 0; i < data.length; i++) {
                     $('.testimony-list').append(`
-
-              <tr id="user-testimony" data-note-id="${data[i].id}">
+                  <tr id="user-testimony" data-note-id="${data[i].id}">
                   <td class="user-edit-testimony">${data[i].userTestimony}</td>
                   <td class="user-display-name">${data[i].userDisplayName}</td>
                   <td><a href id="edit-testimony"><img class="icon" src="/images/pencil.svg"></a></td> 
@@ -86,7 +82,6 @@ function pastSubmittedTestimonies(event) {
 // EDIT TESTIMONY ==========================================
 function onEditTestimony(event) {
     event.preventDefault();
-    console.log('edit testimony')
 
     const testimonyID = $(event.currentTarget)
         .parent().parent().attr('data-note-id')
@@ -97,23 +92,17 @@ function onEditTestimony(event) {
     const userDisplayName = $(event.currentTarget)
         .parent().parent().children('.user-display-name').text()
 
-
-    console.log(testimonyID, userEditTestimony, userDisplayName)
-    //scroll to top table
     $('.user-testimony-forms').html(`
             <form id="testimony-edit-form" data-note-id="${testimonyID}">
             <textarea name="userTestimony" id="userTestimony">${userEditTestimony}</textarea>
             <input type="text" id="userDisplayName" name="userDisplayName" value="${userDisplayName}" placeholder="Choose Display Name">
             <input type="submit" value="Edit Testimony">
             </form>`)
-
 }
 
 // SUBMIT EDIT TESTIMONY ==========================================
 function onSubmitEditTestimony(event) {
     event.preventDefault();
-    console.log('on submit edit testimony');
-
     const updateTestimony = {
         userTestimony: $('#userTestimony').val(),
         userDisplayName: $('#userDisplayName').val(),
@@ -148,8 +137,6 @@ function onDeleteTestimony(event) {
    * #note-card element, we need to call event.stopImmediatePropagation to avoid both
    * event listeners firing when we click on the delete button inside #note-card.
    */
-    //   console.log(data[i].id);
-
     event.preventDefault();
 
     // event.stopImmediatePropagation();
@@ -178,3 +165,13 @@ function onDeleteTestimony(event) {
     }
 }
 
+function updateAuthenticatedUI() {
+    const authUser = CACHE.getAuthenticatedUserFromCache();
+    if (authUser) {
+        STATE.authUser = authUser;
+        // $('#nav-greeting').html(`Welcome, ${authUser.name}`);
+        $('.auth-menu').removeAttr('hidden');
+    } else {
+        $('.default-menu').removeAttr('hidden');
+    }
+}

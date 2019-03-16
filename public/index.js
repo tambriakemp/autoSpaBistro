@@ -12,6 +12,14 @@ function onPageLoad() {
   $('body').on('click', '#logout-btn', onLogoutBtnClick);
 }
 
+// LOGOUT USER BUTTON ==========================================
+function onLogoutBtnClick(event) {
+  const confirmation = confirm('Are you sure you want to logout?');
+  if (confirmation) {
+      CACHE.deleteAuthenticatedUserFromCache();
+      window.open('/', '_self');
+  }
+}
 // TESTIMONIAL SLIDER =============================================//
 function loadTestimonyCarousel() {
   const testimonies = HTTP.getAllTestimonies(

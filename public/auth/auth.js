@@ -1,4 +1,3 @@
-// All these modules are are defined in /public/utilities
 let STATE = {};
 const HTTP = window.HTTP_MODULE;
 const CACHE = window.CACHE_MODULE;
@@ -11,6 +10,16 @@ function onPageLoad() {
     $('#login-form').submit(onLoginSubmit);
 }
 
+// LOGOUT USER BUTTON ==========================================
+function onLogoutBtnClick(event) {
+    const confirmation = confirm('Are you sure you want to logout?');
+    if (confirmation) {
+        CACHE.deleteAuthenticatedUserFromCache();
+        window.open('/', '_self');
+    }
+}
+
+// REGISTER USER ==========================================
 function onSignUpSubmit(event) {
     event.preventDefault();
     const userData = {
@@ -30,6 +39,7 @@ function onSignUpSubmit(event) {
     });
 }
 
+// LOGIN USER  ==========================================
 function onLoginSubmit(event) {
     event.preventDefault();
 
@@ -51,11 +61,11 @@ function onLoginSubmit(event) {
     });
 }
 
+// AUTHENTIC USER MENU ==========================================
 function updateAuthenticatedUI() {
     const authUser = CACHE.getAuthenticatedUserFromCache();
     if (authUser) {
         STATE.authUser = authUser;
-        // $('#nav-greeting').html(`Welcome, ${authUser.name}`);
         $('.auth-menu').removeAttr('hidden');
     } else {
         $('.default-menu').removeAttr('hidden');

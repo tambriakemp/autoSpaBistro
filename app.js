@@ -43,7 +43,6 @@ passport.use(localStrategy);
 passport.use(jwtStrategy);
 
 
-//In case a HTTP request that is unhandled by our Express Server, return a 404 status code and message
 app.use('*', (req, res) => {
   return res.status(404).json({ message: 'Not Found' });
 });

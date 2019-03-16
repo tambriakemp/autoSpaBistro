@@ -1,63 +1,54 @@
-'use strict';
+"use strict";
 
-const express = require('express');
-const { Testimony } = require('./models');
-const passport = require('passport');
+const express = require("express");
+const { Testimony } = require("./models");
+const passport = require("passport");
 const router = express.Router();
-const jwtAuth = passport.authenticate('jwt', { session: false });
-
+const jwtAuth = passport.authenticate("jwt", { session: false });
 
 // GET ALL TESTIMONIES ========================================
-router.get('/', (req, res) => {
+router.get("/", (req, res) => {
   Testimony.find()
     .then(docs => res.json(docs))
     .catch(err => {
       console.error(err);
-      res.status(500).json({ message: 'Internal Server Error' })
+      res.status(500).json({ message: "Internal Server Error" });
     });
 });
 
 // GET SINGLE TESTIMONY =========================================
-router.get('/:id', jwtAuth, (req, res) => {
+router.get("/:id", jwtAuth, (req, res) => {
   Testimony.find({ user: req.user.id })
-    .populate('user')
+    .populate("user")
     .then(testimonies => {
-      return res.json(
-        testimonies.map(Testimony => Testimony.serialize())
-      );
+      return res.json(testimonies.map(Testimony => Testimony.serialize()));
     })
     .catch(error => {
-      return res.json(error);
+      return res.status(500).json(error);
     });
 });
 
 // GET SPECIFIC USER TESTIMONIES =========================================
 
-router.get('/user', jwtAuth, (req, res) => {
-  // Step 1: Attempt to retrieve all notes using Mongoose.Model.find()
-  // https://mongoosejs.com/docs/api.html#model_Model.find
+router.get("/user", jwtAuth, (req, res) => {
   Testimony.find({ user: req.user.id })
-    .populate('user')
+    .populate("user")
     .then(testimonies => {
-      // Step 2A: Return the correct HTTP status code, and the notes correctly formatted via serialization.
-      return res.status(HTTP_STATUS_CODES.OK).json(
-        testimonies.map(testimony => testimony.serialize())
-      );
+      return res.json(testimonies.map(testimony => testimony.serialize()));
     })
     .catch(error => {
-      // Step 2B: If an error ocurred, return an error HTTP status code and the error in JSON format.
-      return res.status(HTTP_STATUS_CODES.INTERNAL_SERVER_ERROR).json(error);
+      return res.status(500).json(error);
     });
 });
 
 // POST TESTIMONY =============================================
 router.post("/", jwtAuth, (req, res) => {
   let testimony = Testimony();
-  testimony.user = req.user.id,
-    testimony.userTestimony = req.body.userTestimony,
-    testimony.userDisplayName = req.body.userDisplayName
+  (testimony.user = req.user.id),
+    (testimony.userTestimony = req.body.userTestimony),
+    (testimony.userDisplayName = req.body.userDisplayName);
 
-  testimony.save((err) => {
+  testimony.save(err => {
     if (err) {
       res.send({ err: err });
     } else {
@@ -67,30 +58,29 @@ router.post("/", jwtAuth, (req, res) => {
 });
 
 // UPDATE TESTIMONY ===========================================
-router.put('/:id', jwtAuth, (req, res) => {
+router.put("/:id", jwtAuth, (req, res) => {
   const testimonyUpdate = {
     userTestimony: req.body.userTestimony,
     userDisplayName: req.body.userDisplayName
   };
   Testimony.findByIdAndUpdate(req.params.id, testimonyUpdate)
     .then(() => {
-      return res.end();
+      return res.status(200).json({ msg: "success" });
     })
     .catch(error => {
-      return res.json(error);
+      return res.status(500).json(error);
     });
 });
 
 // DELETE TESTIMONY =========================================
-router.delete('/:id', jwtAuth, (req, res) => {
+router.delete("/:id", jwtAuth, (req, res) => {
   Testimony.findByIdAndDelete(req.params.id)
     .then(() => {
-      return res.end();
+      return res.status(200).json({ msg: "success" });
     })
     .catch(error => {
-      return res.json(error);
+      return res.status(500).json(error);
     });
 });
-
 
 module.exports = { router };

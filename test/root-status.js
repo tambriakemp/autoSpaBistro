@@ -1,82 +1,43 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
+const faker = require('faker');
+const mongoose = require('mongoose');
 
-// Import server.js and use destructuring assignment to create variables for
-// server.app, server.runServer, and server.closeServer
-const {app, runServer, closeServer} = require('../app');
+const { Users } = require('../users/models');
+const { app, runServer, closeServer } = require('../app');
+const { TEST_DATABASE_URL } = require('../config/config');
 
-// declare a variable for expect from chai import
 const expect = chai.expect;
 
 chai.use(chaiHttp);
 
 describe('Users', function() {
-  // before(function() {
-  //   return runServer();
-  // });
-
-  // // Close server after these tests run in case
-  // // we have other test modules that need to 
-  // // call `runServer`. If server is already running,
-  // // `runServer` will error out.
-  // after(function() {
-  //   return closeServer();
-  // });
-    it.only('should list users on GET', function(done) {
+    it('should list users on GET', function(done) {
       chai.request(app)
         .get('/api/users')
-        .then(function(res) {
-          console.log(res)
+        .then(function(res) { 
+          console.log(res.body)
           expect(res).to.have.status(200);
+           return done();
+
                });
-          done();
-      
-    });
+      });
   });
 
-  // it("should update blog posts on PUT", function() {
-  //   return (
-  //     chai
-  //       .request(app)
-  //       // first have to get
-  //       // .get("/blog-posts")
-  //       .then(function(res) {
-  //         const updatedPost = Object.assign(res.body[0], {
-  //           userTestimony: "connect the dots",
-  //           userDisplayName: "la la la la la"
-  //         });
-  //         return chai
-  //           .request(app)
-  //           .put(`/blog-posts/${res.body[0].id}`)
-  //           .send(updatedPost)
-
-  //           .then(function(res) {
-  //             expect(res).to.have.status(204);
-  //           });
-  //       })
-  //   );
+  // it('should list ALL blobs on /blobs GET', function (done) {
+  //   let res;
+  //   return chai.request(app)
+  //     .get('/api/users')
+  //     .then(function (_res) {
+  //       res = _res;
+  //       expect(res).to.have.status(200);
+  //       expect(res.body.users).to.have.lengthOf.at.least(1);
+  //       return Users.count();
+  //       done();
+  //     })
+  //     .then(function (count) {
+  //       expect(res.body.users).to.have.lengthOf(count);
+  //       done();
+  //     });
   // });
 
-  // describe('Testimonies', function() {
-  //   it('should list testimonies on GET', function(done) {
-  //     chai.request(app)
-  //       .get('/api/testimonies')
-  //       .then(function(res) {
-  //         expect(res).to.have.status(200);
-  //              });
-  //         done();
-      
-  //   });
-  // });
-
-  // describe('Testimonies', function() {
-  //   it('should list testimonies on GET', function(done) {
-  //     chai.request(app)
-  //       .get('/api/testimonies/5c8610319dca2fd083b2eea3')
-  //       .then(function(res) {
-  //         expect(res).to.have.status(200);
-  //              });
-  //         done();
-      
-  //   });
-  // });

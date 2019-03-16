@@ -14,8 +14,6 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  // firstName: {type: String, default: ''}, //WHAT IS DEFAULT FOR ''
-  // lastName: {type: String, default: ''},
   name: {type: String, default: ''},
   email: {type: String,
     required: true,
@@ -30,7 +28,6 @@ UserSchema.methods.serialize = function() {
     email: this.email || ''
   };
 };
-
 
 UserSchema.methods.validatePassword = function(password) {
   return bcrypt.compare(password, this.password);

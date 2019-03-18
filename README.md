@@ -23,6 +23,6 @@ A carwash app that allows customers to setup a profile and select a membership p
 
 
 ## Screenshots
-![Home Page](/path/to/img.jpg "Title")
+![Home Page](autoSpaBistro/public/images/autospabistrohomepage.png "Home Page")
 ![Login/Register Page](/path/to/img.jpg "Title")
 ![Account](/path/to/img.jpg "Title")

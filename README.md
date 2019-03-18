@@ -1,5 +1,7 @@
 # Spa Bistro Car Wash
 
+https://spabistro.herokuapp.com
+
 ## Description
 A carwash app that allows customers to setup a profile and select a membership plan to add their car to. 
 
@@ -12,9 +14,9 @@ A carwash app that allows customers to setup a profile and select a membership p
 * Heroku
 
 ## API
-https://spabistro.herokuapp.com/api/users
-https://spabistro.herokuapp.com/api/testimonies
-Allows for Create, Read, Update, Delete on both APIs
+* https://spabistro.herokuapp.com/api/users
+* https://spabistro.herokuapp.com/api/testimonies
+* Allows for Create, Read, Update, Delete on both APIs
 
 ## User Stories
 

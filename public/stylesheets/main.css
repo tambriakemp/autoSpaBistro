@@ -394,7 +394,7 @@ input[type="submit"] {
 
 /* KEEP IN TOUCH ============================================ */
 .keep-in-touch-sec {
-  padding: 50px 10px;
+  padding: 80px 30px;
 }
 .keep-in-touch-sec h3 {
   color: #ffcf00;
@@ -536,7 +536,7 @@ footer h4 {
     margin-left: 20px;
   }
   section {
-    padding: 80px 20px;
+    padding: 80px 30px;
     margin: 0;
   }
   /* HEADER ============================================= */
@@ -574,7 +574,7 @@ footer h4 {
     margin: 35px 0 0 0;
   }
   .keep-in-touch-sec {
-    padding: 50px 150px;
+    padding: 80px 250px;
   }
   .keep-in-touch-sec input[name="name"],
   .keep-in-touch-sec input[name="email"] {
@@ -644,5 +644,8 @@ footer h4 {
   .copywrite-right {
     float: right;
     padding-top: 10px;
+  }
+  .keep-in-touch-sec {
+    padding: 80px 150px;
   }
 }

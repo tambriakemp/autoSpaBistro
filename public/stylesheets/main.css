@@ -573,9 +573,7 @@ footer h4 {
     color: #ffffff;
     margin: 35px 0 0 0;
   }
-  .keep-in-touch-sec {
-    padding: 80px 250px;
-  }
+
   .keep-in-touch-sec input[name="name"],
   .keep-in-touch-sec input[name="email"] {
     width: 49%;

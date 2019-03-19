@@ -26,13 +26,6 @@ router.post("/login", localAuth, (req, res) => {
   res.json({ authToken, user });
 });
 
-const adminLocalAuth = passport.authenticate("adminlocal", { session: false });
-router.post("/admin/login", adminLocalAuth, (req, res) => {
-  const adminUser = req.user.serialize();
-  const authToken = createAuthToken(req.user.serialize());
-  res.json({ authToken, adminUser });
-});
-
 const jwtAuth = passport.authenticate("jwt", { session: false });
 
 // The user exchanges a valid JWT for a new one with a later expiration

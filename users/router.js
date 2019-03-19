@@ -4,11 +4,6 @@ const express = require("express");
 const { User } = require("./models");
 const router = express.Router();
 
-// POST TO CREATE AdMIN USER =====
-router.post("/admin", (req, res) => {
-  // Set the is admin to true
-});
-
 // POST TO CREATE USER ===================================
 router.post("/", (req, res) => {
   const requiredFields = ["username", "name", "password", "email"];

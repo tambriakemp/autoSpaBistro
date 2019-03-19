@@ -393,7 +393,9 @@ input[type="submit"] {
 }
 
 /* KEEP IN TOUCH ============================================ */
-
+.keep-in-touch-sec {
+  padding: 50px 10px;
+}
 .keep-in-touch-sec h3 {
   color: #ffcf00;
 }
@@ -568,6 +570,9 @@ footer h4 {
     color: #ffffff;
     margin: 35px 0 0 0;
   }
+  .keep-in-touch-sec {
+    padding: 50px 150px;
+  }
   .keep-in-touch-sec input[name="name"],
   .keep-in-touch-sec input[name="email"] {
     width: 49%;
@@ -579,7 +584,7 @@ footer h4 {
 @media only screen and (min-width: 1224px) {
   /* HEADER ================================================ */
   .hero-header {
-    padding: 50px 0;
+    padding: 50px 0 0;
   }
   .hero-content .title {
     font-size: 2.6em;
@@ -590,9 +595,9 @@ footer h4 {
   .hero-content .desc {
     max-width: 650px;
   }
-  .hero-content {
-    margin-top: 100px;
-  }
+  /* .hero-content {
+    margin-top: 50px;
+  } */
   .logo img {
     max-width: 300px;
   }

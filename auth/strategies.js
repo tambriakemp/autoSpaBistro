@@ -36,36 +36,6 @@ const localStrategy = new LocalStrategy((username, password, callback) => {
     });
 });
 
-const adminLocalStrategy = new LocalStrategy((username, password, callback) => {
-  let user;
-  User.findOne({ username: username })
-    .then(_user => {
-      user = _user;
-      if (!user || !user.isAdmin) {
-        return Promise.reject({
-          reason: "LoginError",
-          message: "Incorrect username or password"
-        });
-      }
-      return user.validatePassword(password);
-    })
-    .then(isValid => {
-      if (!isValid) {
-        return Promise.reject({
-          reason: "LoginError",
-          message: "Incorrect username or password"
-        });
-      }
-      return callback(null, user);
-    })
-    .catch(err => {
-      if (err.reason === "LoginError") {
-        return callback(null, false, err);
-      }
-      return callback(err, false);
-    });
-});
-
 const jwtStrategy = new JwtStrategy(
   {
     secretOrKey: JWT_SECRET,
@@ -79,4 +49,4 @@ const jwtStrategy = new JwtStrategy(
 
 /// admin local and follow pattern of local strategy
 
-module.exports = { localStrategy, adminLocalStrategy, jwtStrategy };
+module.exports = { localStrategy, jwtStrategy };

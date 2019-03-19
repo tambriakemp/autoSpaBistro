@@ -15,8 +15,7 @@ const UserSchema = mongoose.Schema({
     required: true
   },
   name: { type: String, default: "" },
-  email: { type: String, required: true, unique: true },
-  isAdmin: { type: Boolean, default: false }
+  email: { type: String, required: true, unique: true }
 });
 
 UserSchema.methods.serialize = function() {
@@ -24,8 +23,7 @@ UserSchema.methods.serialize = function() {
     id: this._id,
     username: this.username || "",
     name: this.name || "",
-    email: this.email || "",
-    isAdmin: this.isAdmin
+    email: this.email || ""
   };
 };
 

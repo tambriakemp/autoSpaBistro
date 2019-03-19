@@ -157,7 +157,7 @@ input[type="submit"] {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url("../images/header-img.jpg");
   background-size: cover;
-  min-height: 700px;
+  min-height: 450px;
   background-position: center;
 }
 
@@ -185,7 +185,7 @@ input[type="submit"] {
 
 .hero-content {
   text-align: center;
-  margin-top: 140px;
+  margin-top: 30px;
 }
 
 .hero-content .title {
@@ -532,9 +532,6 @@ footer h4 {
   div.pages-nav nav ul li a {
     font-size: 1.2em;
     margin-left: 20px;
-  }
-  section {
-    padding: 80px;
   }
 
   /* HEADER ============================================= */

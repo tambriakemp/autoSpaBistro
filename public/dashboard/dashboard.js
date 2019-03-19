@@ -43,8 +43,9 @@ function onCreateSubmit(event) {
   HTTP.createTestimony({
     authToken: STATE.authUser.authToken,
     newTestimony: newTestimony,
-    onSuccess: testimony => {
-      $(".notification").html(`Testimony submitted successfully`);
+    onSuccess: function() {
+      $(".notification").html(` Testimony was submitted successfully`);
+      pastSubmittedTestimonies();
     },
     onError: err => {
       $(".notification").html(
@@ -77,7 +78,7 @@ function pastSubmittedTestimonies(event) {
   });
 }
 
-// EDIT TESTIMONY ==========================================
+// EDIT TESTIMONY BUTTON ==========================================
 function onEditTestimony(event) {
   event.preventDefault();
 
@@ -104,11 +105,13 @@ function onEditTestimony(event) {
             <input type="text" id="userDisplayName" name="userDisplayName" value="${userDisplayName}" placeholder="Choose Display Name">
             <input type="submit" value="Edit Testimony">
             </form>`);
+  $(window).scrollTop($(".user-testimony-forms").offset().top);
 }
 
 // SUBMIT EDIT TESTIMONY ==========================================
 function onSubmitEditTestimony(event) {
   event.preventDefault();
+
   const updateTestimony = {
     userTestimony: $("#userTestimony").val(),
     userDisplayName: $("#userDisplayName").val(),
@@ -119,11 +122,9 @@ function onSubmitEditTestimony(event) {
     testimonyID: updateTestimony.testimonyID,
     authToken: STATE.authUser.authToken,
     updateTestimony: updateTestimony,
-    onSuccess: testimony => {
-      location.reload();
-      $(function() {
-        $(".notification").html(`Testimony updated successfully`);
-      });
+    onSuccess: function() {
+      $(".notification").html(` Testimony was edited successfully`);
+      pastSubmittedTestimonies();
     },
     onError: err => {
       $(".notification").html(`ERROR: Testimony was not updated successfully`);

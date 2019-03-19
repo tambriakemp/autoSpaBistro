@@ -535,7 +535,10 @@ footer h4 {
     font-size: 1.2em;
     margin-left: 20px;
   }
-
+  section {
+    padding: 80px 20px;
+    margin: 0;
+  }
   /* HEADER ============================================= */
   .hero .hero-header nav li a {
     color: #ffffff;
